@@ -1,0 +1,9 @@
+apply plugin: 'java'
+
+repositories{
+    mavenCentral()
+}
+dependencies {
+    testCompile group: 'org.testng', name: 'testng', version: '6.13.1'
+    compile 'org.seleniumhq.selenium:selenium-java:3.8.1'
+}
