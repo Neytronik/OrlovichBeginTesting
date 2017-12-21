@@ -57,4 +57,34 @@ public class ContactHelper extends HelperBase {
     public void initContact() {
         click(By.linkText("add new"));
     }
+
+    public void selectContact() {
+        click(By.id("8"));
+    }
+
+    public void deleteSelectedContact() {
+        click(By.xpath("//div[@id='content']/form[2]/div[2]/input"));
+    }
+
+    public void editContact() {
+        click(By.xpath("//table[@id='maintable']/tbody/tr[2]/td[8]/a/img"));
+    }
+
+    public void updateContact() {
+        click(By.name("update"));
+    }
+
+    public void modificationContactInformation(ContactData contactData) {
+        type(By.name("firstname"),contactData.getFirstName());
+        type(By.name("middlename"),contactData.getMiddleName());
+        type(By.name("lastname"),contactData.getLastName());
+        type(By.name("nickname"),contactData.getNikName());
+        typeDefault(By.name("title"));
+        type(By.name("company"),"Corp");
+        type(By.name("address"),contactData.getAddress());
+        type(By.name("home"),contactData.getHomeTelephone());
+        type(By.name("mobile"),contactData.getMobile());
+        type(By.name("work"),"12");
+        type(By.name("fax"),"123");
+    }
 }

@@ -1,6 +1,7 @@
 package ru.stqa.pft.addressbook.appmanager;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class HelperBase {
@@ -23,5 +24,17 @@ public class HelperBase {
     protected void typeDefault(By locator) {
         wd.findElement(locator).click();
         wd.findElement(locator).sendKeys("\\9");
+    }
+    public  boolean isAlertPresent() {
+        try {
+            wd.switchTo().alert();
+            return true;
+        } catch (NoAlertPresentException e) {
+            return false;
+        }
+    }
+
+    public void applyDialog() {
+        wd.switchTo().alert().accept();
     }
 }
