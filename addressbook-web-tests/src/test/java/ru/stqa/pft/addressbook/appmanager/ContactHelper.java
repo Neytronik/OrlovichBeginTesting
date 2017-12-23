@@ -47,7 +47,7 @@ public class ContactHelper extends HelperBase {
         typeDefault(By.name("notes"));
     }
 
-    public void createContact() {
+    public void submitCreateContact() {
         click(By.xpath("//div[@id='content']/form/input[21]"));
     }
 
@@ -83,5 +83,15 @@ public class ContactHelper extends HelperBase {
         type(By.name("mobile"), contactData.getMobile());
         type(By.name("work"), "12");
         type(By.name("fax"), "123");
+    }
+
+    public void createContact(ContactData contact) {
+        initContact();
+        fillContactInformation(contact);
+        submitCreateContact();
+    }
+
+    public boolean isThereAContact() {
+        return By.xpath("//*[@id=\"maintable\"]/tbody/tr[2]/td[1]").equals(null);
     }
 }
