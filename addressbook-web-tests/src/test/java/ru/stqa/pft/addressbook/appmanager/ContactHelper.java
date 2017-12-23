@@ -2,7 +2,6 @@ package ru.stqa.pft.addressbook.appmanager;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import ru.stqa.pft.addressbook.model.ContactData;
 
 public class ContactHelper extends HelperBase {
@@ -12,20 +11,17 @@ public class ContactHelper extends HelperBase {
     }
 
     public void fillContactInformation(ContactData contactData) {
-        type(By.name("firstname"),contactData.getFirstName());
-        type(By.name("middlename"),contactData.getMiddleName());
-        type(By.name("lastname"),contactData.getLastName());
-        type(By.name("nickname"),contactData.getNikName());
+        type(By.name("firstname"), contactData.getFirstName());
+        type(By.name("middlename"), contactData.getMiddleName());
+        type(By.name("lastname"), contactData.getLastName());
+        type(By.name("nickname"), contactData.getNikName());
         typeDefault(By.name("title"));
-        type(By.name("company"),"Corp");
-        type(By.name("address"),contactData.getAddress());
-        type(By.name("home"),contactData.getHomeTelephone());
-        type(By.name("mobile"),contactData.getMobile());
-        type(By.name("work"),"12");
-        type(By.name("fax"),"123");
-        type(By.name("fax"),"123");
-
-        typeDefault(By.name("email"));
+        type(By.name("company"), "Corp");
+        type(By.name("address"), contactData.getAddress());
+        type(By.name("home"), contactData.getHomeTelephone());
+        type(By.name("mobile"), contactData.getMobile());
+        type(By.name("work"), "12");
+        type(By.name("fax"), "123");
         typeDefault(By.name("email2"));
         typeDefault(By.name("email3"));
         typeDefault(By.name("homepage"));
@@ -60,7 +56,7 @@ public class ContactHelper extends HelperBase {
     }
 
     public void selectContact() {
-        click(By.id("8"));
+        click(By.xpath("//*[@id=\"maintable\"]/tbody/tr[2]/td[1]"));
     }
 
     public void deleteSelectedContact() {
@@ -76,16 +72,16 @@ public class ContactHelper extends HelperBase {
     }
 
     public void modificationContactInformation(ContactData contactData) {
-        type(By.name("firstname"),contactData.getFirstName());
-        type(By.name("middlename"),contactData.getMiddleName());
-        type(By.name("lastname"),contactData.getLastName());
-        type(By.name("nickname"),contactData.getNikName());
+        type(By.name("firstname"), contactData.getFirstName());
+        type(By.name("middlename"), contactData.getMiddleName());
+        type(By.name("lastname"), contactData.getLastName());
+        type(By.name("nickname"), contactData.getNikName());
         typeDefault(By.name("title"));
-        type(By.name("company"),"Corp");
-        type(By.name("address"),contactData.getAddress());
-        type(By.name("home"),contactData.getHomeTelephone());
-        type(By.name("mobile"),contactData.getMobile());
-        type(By.name("work"),"12");
-        type(By.name("fax"),"123");
+        type(By.name("company"), "Corp");
+        type(By.name("address"), contactData.getAddress());
+        type(By.name("home"), contactData.getHomeTelephone());
+        type(By.name("mobile"), contactData.getMobile());
+        type(By.name("work"), "12");
+        type(By.name("fax"), "123");
     }
 }
