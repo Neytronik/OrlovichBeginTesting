@@ -2,7 +2,11 @@ package ru.stqa.pft.addressbook.appmanager;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import ru.stqa.pft.addressbook.model.ContactData;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ContactHelper extends HelperBase {
 
@@ -55,8 +59,9 @@ public class ContactHelper extends HelperBase {
         click(By.linkText("add new"));
     }
 
-    public void selectContact() {
-        click(By.xpath("//*[@id=\"maintable\"]/tbody/tr[2]/td[1]"));
+    public void selectContact(int index) {
+        wd.findElements(By.name("selected[]")).get(index).click();
+//        click(By.xpath("//*[@id=\"maintable\"]/tbody/tr[2]/td[1]"));
     }
 
     public void deleteSelectedContact() {
@@ -92,6 +97,28 @@ public class ContactHelper extends HelperBase {
     }
 
     public boolean isThereAContact() {
-        return By.xpath("//*[@id=\"maintable\"]/tbody/tr[2]/td[1]").equals(null);
+        return isElementPresent(By.name("selected[]"));
+    }
+
+    public int getContactCount() {
+        return wd.findElements(By.name("selected[]")).size();
+    }
+    public List<ContactData> getContactList() {
+        List<ContactData> contacts = new ArrayList<>();
+        int i = 2;
+        List<WebElement> elements = wd.findElements(By.name("entry"));
+        for (WebElement element : elements) {
+            String firstName = getContextField(By.xpath("//*[@id=\"maintable\"]/tbody/tr[" + i + "]/td[3]"));
+            String lastName = getContextField(By.xpath("//*[@id=\"maintable\"]/tbody/tr[" + i + "]/td[2]"));
+            int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
+            ContactData contact = new ContactData(id, firstName, null, lastName, null, null, null, null);
+            contacts.add(contact);
+            i++;
+        }
+        return contacts;
+    }
+
+    public String getContextField(By locator) {
+        return wd.findElement(locator).getText();
     }
 }
