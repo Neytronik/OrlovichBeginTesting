@@ -59,12 +59,11 @@ public class ContactHelper extends HelperBase {
         click(By.linkText("add new"));
     }
 
-    public void selectContact(int index) {
+    public void select(int index) {
         wd.findElements(By.name("selected[]")).get(index).click();
-//        click(By.xpath("//*[@id=\"maintable\"]/tbody/tr[2]/td[1]"));
     }
 
-    public void deleteSelectedContact() {
+    public void deleteSelected() {
         click(By.xpath("//div[@id='content']/form[2]/div[2]/input"));
     }
 
@@ -90,7 +89,7 @@ public class ContactHelper extends HelperBase {
         type(By.name("fax"), "123");
     }
 
-    public void createContact(ContactData contact) {
+    public void create(ContactData contact) {
         initContact();
         fillContactInformation(contact);
         submitCreateContact();
@@ -103,7 +102,7 @@ public class ContactHelper extends HelperBase {
     public int getContactCount() {
         return wd.findElements(By.name("selected[]")).size();
     }
-    public List<ContactData> getContactList() {
+    public List<ContactData> list() {
         List<ContactData> contacts = new ArrayList<>();
         int i = 2;
         List<WebElement> elements = wd.findElements(By.name("entry"));
@@ -111,7 +110,7 @@ public class ContactHelper extends HelperBase {
             String firstName = getContextField(By.xpath("//*[@id=\"maintable\"]/tbody/tr[" + i + "]/td[3]"));
             String lastName = getContextField(By.xpath("//*[@id=\"maintable\"]/tbody/tr[" + i + "]/td[2]"));
             int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
-            ContactData contact = new ContactData(id, firstName, null, lastName, null, null, null, null);
+            ContactData contact = new ContactData().withId(id).withFirstName(firstName).withLastName(lastName);
             contacts.add(contact);
             i++;
         }
@@ -120,5 +119,21 @@ public class ContactHelper extends HelperBase {
 
     public String getContextField(By locator) {
         return wd.findElement(locator).getText();
+    }
+
+    public void modify(ContactData contact) {
+       editContact();
+        modificationContactInformation(contact);
+        updateContact();
+        returnToHomePage();
+    }
+
+    public void returnToHomePage() {
+        click(By.linkText("home"));
+    }
+    public void delete(int index) {
+        select(index);
+        deleteSelected();
+        applyDialog();
     }
 }

@@ -4,36 +4,52 @@ import java.util.Objects;
 
 public class ContactData {
     private int id;
-    private final String firstName;
-    private final String middleName;
-    private final String lastName;
-    private final String nikName;
-    private final String address;
-    private final String homeTelephone;
-    private final String mobile;
+    private String firstName;
+    private String middleName;
+    private String lastName;
+    private String nikName;
+    private String address;
+    private String homeTelephone;
+    private String mobile;
 
-    public ContactData(int id, String firstName, String middleName, String lastName, String nikName, String address, String homeTelephone, String mobile) {
-        this.id = id;
+    public ContactData withFirstName(String firstName) {
         this.firstName = firstName;
-        this.middleName = middleName;
-        this.lastName = lastName;
-        this.nikName = nikName;
-
-        this.address = address;
-        this.homeTelephone = homeTelephone;
-        this.mobile = mobile;
+        return this;
     }
 
-    public ContactData(String firstName, String middleName, String lastName, String nikName, String address, String homeTelephone, String mobile) {
-        this.id = Integer.MAX_VALUE;
-
-        this.firstName = firstName;
+    public ContactData withMiddleName(String middleName) {
         this.middleName = middleName;
+        return this;
+    }
+
+    public ContactData withLastName(String lastName) {
         this.lastName = lastName;
+        return this;
+    }
+
+    public ContactData withNikName(String nikName) {
         this.nikName = nikName;
+        return this;
+    }
+
+    public ContactData withAddress(String address) {
         this.address = address;
+        return this;
+    }
+
+    public ContactData withHomeTelephone(String homeTelephone) {
         this.homeTelephone = homeTelephone;
+        return this;
+    }
+
+    public ContactData withMobile(String mobile) {
         this.mobile = mobile;
+        return this;
+    }
+
+    public ContactData withId(int id) {
+        this.id = id;
+        return this;
     }
 
     public String getFirstName() {
@@ -88,9 +104,6 @@ public class ContactData {
         return Objects.hash(firstName, lastName);
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public int getId() {
 
