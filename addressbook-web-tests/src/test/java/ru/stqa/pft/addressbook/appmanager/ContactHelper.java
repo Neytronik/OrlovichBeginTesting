@@ -4,11 +4,9 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import ru.stqa.pft.addressbook.model.ContactData;
+import ru.stqa.pft.addressbook.model.Contacts;
 
-import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 public class ContactHelper extends HelperBase {
 
@@ -61,17 +59,11 @@ public class ContactHelper extends HelperBase {
         click(By.linkText("add new"));
     }
 
-    public void select(int index) {
-        wd.findElements(By.name("selected[]")).get(index).click();
-    }
 
     public void deleteSelected() {
         click(By.xpath("//div[@id='content']/form[2]/div[2]/input"));
     }
 
-    public void editContact() {
-        click(By.xpath("//table[@id='maintable']/tbody/tr[2]/td[8]/a/img"));
-    }
 
     public void updateContact() {
         click(By.name("update"));
@@ -105,8 +97,8 @@ public class ContactHelper extends HelperBase {
         return wd.findElements(By.name("selected[]")).size();
     }
 
-    public Set<ContactData> all() {
-        Set<ContactData> contacts = new HashSet<>();
+    public Contacts all() {
+        Contacts contacts = new Contacts();
         int i = 2;
         List<WebElement> elements = wd.findElements(By.name("entry"));
         for (WebElement element : elements) {
@@ -125,20 +117,18 @@ public class ContactHelper extends HelperBase {
     }
 
     public void modify(ContactData contact) {
-        editContact();
+        editContactById(contact.getId());
         modificationContactInformation(contact);
         updateContact();
         returnToHomePage();
     }
 
-    public void returnToHomePage() {
-        click(By.linkText("home"));
+    private void editContactById(int id) {
+        wd.findElement(By.cssSelector("a[href='edit.php?id=" + id + "']")).click();
     }
 
-    public void delete(int index) {
-        select(index);
-        deleteSelected();
-        applyDialog();
+    public void returnToHomePage() {
+        click(By.linkText("home"));
     }
 
     public void delete(ContactData contact) {
