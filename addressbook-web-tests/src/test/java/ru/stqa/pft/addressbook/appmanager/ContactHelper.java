@@ -112,10 +112,9 @@ public class ContactHelper extends HelperBase {
             String lastName = getContextField(By.xpath("//*[@id=\"maintable\"]/tbody/tr[" + i + "]/td[2]"));
             String address = getContextField(By.xpath("//*[@id=\"maintable\"]/tbody/tr[" + i + "]/td[4]"));
             String allPhones = getContextField(By.xpath("//*[@id=\"maintable\"]/tbody/tr[" + i + "]/td[6]"));
-            String[] phones = allPhones.split("\n");
             int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
             ContactData contact = new ContactData().withId(id).withFirstName(firstName).withLastName(lastName)
-                    .withHomeTelephone(phones[0]).withMobile(phones[1]).withAddress(address);
+                    .withAllPhones(allPhones).withAddress(address);
             contactCache.add(contact);
             i++;
         }
@@ -159,10 +158,12 @@ public class ContactHelper extends HelperBase {
         String lastName = wd.findElement(By.name("lastname")).getAttribute("value");
         String home = wd.findElement(By.name("home")).getAttribute("value");
         String mobile = wd.findElement(By.name("mobile")).getAttribute("value");
+        String workPhone = wd.findElement(By.name("work")).getAttribute("value");
+        String phone2 = wd.findElement(By.name("phone2")).getAttribute("value");
         String address = wd.findElement(By.name("address")).getText();
         wd.navigate().back();
 
         return new ContactData().withId(contact.getId()).withFirstName(firstName).withLastName(lastName)
-                .withHomeTelephone(home).withMobile(mobile).withAddress(address);
+                .withHomeTelephone(home).withMobile(mobile).withAddress(address).withWorkPhone(workPhone).withPhone2(phone2);
     }
 }

@@ -11,6 +11,40 @@ public class ContactData {
     private String address;
     private String homeTelephone;
     private String mobile;
+    private String workPhone;
+    private String phone2;
+
+
+    public String getPhone2() {
+        return phone2;
+    }
+
+    public ContactData withPhone2(String phone2) {
+        this.phone2 = phone2;
+        return this;
+    }
+
+
+    public String getWorkPhone() {
+        return workPhone;
+    }
+
+    public ContactData withWorkPhone(String workPhone) {
+        this.workPhone = workPhone;
+        return this;
+    }
+
+    public String getAllPhones() {
+        return allPhones;
+    }
+
+    public ContactData withAllPhones(String allPhones) {
+        this.allPhones = allPhones;
+        return this;
+    }
+
+    private String allPhones;
+
 
     public ContactData withFirstName(String firstName) {
         this.firstName = firstName;
