@@ -6,7 +6,9 @@ import org.openqa.selenium.WebElement;
 import ru.stqa.pft.addressbook.model.ContactData;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class ContactHelper extends HelperBase {
 
@@ -102,8 +104,9 @@ public class ContactHelper extends HelperBase {
     public int getContactCount() {
         return wd.findElements(By.name("selected[]")).size();
     }
-    public List<ContactData> list() {
-        List<ContactData> contacts = new ArrayList<>();
+
+    public Set<ContactData> all() {
+        Set<ContactData> contacts = new HashSet<>();
         int i = 2;
         List<WebElement> elements = wd.findElements(By.name("entry"));
         for (WebElement element : elements) {
@@ -122,7 +125,7 @@ public class ContactHelper extends HelperBase {
     }
 
     public void modify(ContactData contact) {
-       editContact();
+        editContact();
         modificationContactInformation(contact);
         updateContact();
         returnToHomePage();
@@ -131,9 +134,20 @@ public class ContactHelper extends HelperBase {
     public void returnToHomePage() {
         click(By.linkText("home"));
     }
+
     public void delete(int index) {
         select(index);
         deleteSelected();
         applyDialog();
+    }
+
+    public void delete(ContactData contact) {
+        selectById(contact.getId());
+        deleteSelected();
+        applyDialog();
+    }
+
+    private void selectById(int id) {
+        wd.findElement(By.cssSelector("input[value='" + id + "']")).click();
     }
 }
