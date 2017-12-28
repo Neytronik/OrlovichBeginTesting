@@ -136,6 +136,9 @@ public class ContactHelper extends HelperBase {
     private void editContactById(int id) {
         wd.findElement(By.cssSelector("a[href='edit.php?id=" + id + "']")).click();
     }
+    private void profileContactById(int id) {
+        wd.findElement(By.cssSelector("a[href='view.php?id=" + id + "']")).click();
+    }
 
     public void returnToHomePage() {
         click(By.linkText("home"));
@@ -155,15 +158,56 @@ public class ContactHelper extends HelperBase {
     public ContactData infoFromEditForm(ContactData contact) {
         editContactById(contact.getId());
         String firstName = wd.findElement(By.name("firstname")).getAttribute("value");
+        String middleName = wd.findElement(By.name("middlename")).getAttribute("value");
         String lastName = wd.findElement(By.name("lastname")).getAttribute("value");
+        String nickName = wd.findElement(By.name("nickname")).getAttribute("value");
+        String company = wd.findElement(By.name("company")).getAttribute("value");
+        String title = wd.findElement(By.name("title")).getAttribute("value");
         String home = wd.findElement(By.name("home")).getAttribute("value");
         String mobile = wd.findElement(By.name("mobile")).getAttribute("value");
         String workPhone = wd.findElement(By.name("work")).getAttribute("value");
+        String fax = wd.findElement(By.name("fax")).getAttribute("value");
         String phone2 = wd.findElement(By.name("phone2")).getAttribute("value");
         String address = wd.findElement(By.name("address")).getText();
+        String address2 = wd.findElement(By.name("address2")).getText();
+        String notes = wd.findElement(By.name("notes")).getText();
+        String email = wd.findElement(By.name("email")).getAttribute("value");
+        String email2 = wd.findElement(By.name("email2")).getAttribute("value");
+        String email3 = wd.findElement(By.name("email3")).getAttribute("value");
+        String dayBith = wd.findElement(By.xpath("//*[@id=\"content\"]/form[1]/select[1]/option[1]")).getText();
+        String mouthBith= wd.findElement(By.xpath("//*[@id=\"content\"]/form[1]/select[2]/option[1]")).getText();
+        String yearBith= wd.findElement(By.xpath("//*[@id=\"content\"]/form[1]/input[19]")).getAttribute("value");
+        String birthday = dayBith+mouthBith+yearBith;
+        String dayAn= wd.findElement(By.xpath("//*[@id=\"content\"]/form[1]/select[3]/option[1]")).getText();
+        String mouthAn= wd.findElement(By.xpath("//*[@id=\"content\"]/form[1]/select[4]/option[1]")).getText();
+        String yearAn= wd.findElement(By.cssSelector("input[name='ayear']")).getAttribute("value");
+        String anniversary = dayAn+mouthAn+yearAn;
+        String homepage = wd.findElement(By.name("homepage")).getAttribute("value");
+
         wd.navigate().back();
 
-        return new ContactData().withId(contact.getId()).withFirstName(firstName).withLastName(lastName)
-                .withHomeTelephone(home).withMobile(mobile).withAddress(address).withWorkPhone(workPhone).withPhone2(phone2);
+        return new ContactData().withId(contact.getId()).withFirstName(firstName).withMiddleName(middleName).withLastName(lastName)
+                .withNikName(nickName).withCompany(company).withTitle(title).withFax(fax).withHomeTelephone(home).withMobile(mobile)
+                .withAddress(address).withWorkPhone(workPhone).withEmail(email).withEmail2(email2).withEmail3(email3).withsetBirthday(birthday)
+                .withAnniversary(anniversary).withHomepage(homepage).withAddress2(address2).withNotes(notes)
+                .withPhone2(phone2);
+    }
+
+    public String infoFromProfileForm(ContactData contact) {
+        profileContactById(contact.getId());
+        return wd.findElement(By.cssSelector("div[id='content']")).getText();
+
+
+
+//        String firstName = wd.findElement(By.name("firstname")).getAttribute("value");
+//        String lastName = wd.findElement(By.name("lastname")).getAttribute("value");
+//        String home = wd.findElement(By.name("home")).getAttribute("value");
+//        String mobile = wd.findElement(By.name("mobile")).getAttribute("value");
+//        String workPhone = wd.findElement(By.name("work")).getAttribute("value");
+//        String phone2 = wd.findElement(By.name("phone2")).getAttribute("value");
+//        String address = wd.findElement(By.name("address")).getText();
+//        wd.navigate().back();
+
+
     }
 }

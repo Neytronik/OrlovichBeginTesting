@@ -8,11 +8,123 @@ public class ContactData {
     private String middleName;
     private String lastName;
     private String nikName;
+    private String company;
+    private String title;
     private String address;
     private String homeTelephone;
     private String mobile;
     private String workPhone;
+    private String fax;
+    private String email;
+    private String email2;
+    private String email3;
+    private String homepage;
+    private String birthday;
+    private String anniversary;
+    private String address2;
     private String phone2;
+    private String notes;
+
+
+    public String getTitle() {
+        return title;
+    }
+
+    public ContactData withTitle(String title) {
+        this.title = title;
+        return this;
+    }
+
+    public String getCompany() {
+        return company;
+    }
+
+    public ContactData withCompany(String company) {
+        this.company = company;
+        return this;
+    }
+
+
+    public String getFax() {
+        return fax;
+    }
+
+    public ContactData withFax(String fax) {
+        this.fax = fax;
+        return this;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public ContactData withEmail(String email) {
+        this.email = email;
+        return this;
+    }
+
+    public String getEmail2() {
+        return email2;
+    }
+
+    public ContactData withEmail2(String email2) {
+        this.email2 = email2;
+        return this;
+    }
+
+    public String getEmail3() {
+        return email3;
+    }
+
+    public ContactData withEmail3(String email3) {
+        this.email3 = email3;
+        return this;
+    }
+
+    public String getHomepage() {
+        return homepage;
+    }
+
+    public ContactData withHomepage(String homepage) {
+        this.homepage = homepage;
+        return this;
+    }
+
+    public String getBirthday() {
+        return birthday;
+    }
+
+    public ContactData withsetBirthday(String birthday) {
+        this.birthday = birthday;
+        return this;
+    }
+
+    public String getAnniversary() {
+        return anniversary;
+    }
+
+    public ContactData withAnniversary(String anniversary) {
+        this.anniversary = anniversary;
+        return this;
+    }
+
+    public String getAddress2() {
+        return address2;
+    }
+
+    public ContactData withAddress2(String address2) {
+        this.address2 = address2;
+        return this;
+    }
+
+    public String getNotes() {
+        return notes;
+    }
+
+    public ContactData withNotes(String notes) {
+        this.notes = notes;
+        return this;
+    }
 
 
     public String getPhone2() {
@@ -143,4 +255,8 @@ public class ContactData {
         return id;
     }
 
+
+    public String getAllEmail() {
+        return "petrpetrovpetrovich@corpwwwcorp0002цукац@sdvsdruwwwsdvsdru0003www003";
+    }
 }
