@@ -19,6 +19,7 @@ public class ContactHelper extends HelperBase {
         type(By.name("middlename"), contactData.getMiddleName());
         type(By.name("lastname"), contactData.getLastName());
         type(By.name("nickname"), contactData.getNikName());
+        attach(By.name("photo"), contactData.getPhoto());
         typeDefault(By.name("title"));
         type(By.name("company"), "Corp");
         type(By.name("address"), contactData.getAddress());
@@ -196,18 +197,6 @@ public class ContactHelper extends HelperBase {
     public String infoFromProfileForm(ContactData contact) {
         profileContactById(contact.getId());
         return wd.findElement(By.cssSelector("div[id='content']")).getText();
-
-
-
-//        String firstName = wd.findElement(By.name("firstname")).getAttribute("value");
-//        String lastName = wd.findElement(By.name("lastname")).getAttribute("value");
-//        String home = wd.findElement(By.name("home")).getAttribute("value");
-//        String mobile = wd.findElement(By.name("mobile")).getAttribute("value");
-//        String workPhone = wd.findElement(By.name("work")).getAttribute("value");
-//        String phone2 = wd.findElement(By.name("phone2")).getAttribute("value");
-//        String address = wd.findElement(By.name("address")).getText();
-//        wd.navigate().back();
-
 
     }
 }
