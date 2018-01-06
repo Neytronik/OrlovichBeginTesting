@@ -1,0 +1,36 @@
+apply plugin: 'java'
+
+repositories{
+    mavenCentral()
+}
+dependencies {
+    testCompile group: 'org.testng', name: 'testng', version: '6.13.1'
+    compile 'org.seleniumhq.selenium:selenium-java:3.8.1'
+    testCompile group: 'org.hamcrest', name: 'java-hamcrest', version: '2.0.0.0'
+
+}
+
+task testGroups(type : Test) {
+    useTestNG(){
+        suites 'src\\test\\resources\\testng-groups.xml'
+    }
+
+    if (projects.hasProperty('browser')) {
+        systemProperty 'browser', "${browser}"
+    }
+    if (projects.hasProperty('target')) {
+        systemProperty 'target', "${target}"
+    }
+}
+task {
+    useTestNG(){
+        suites 'src\\test\\resources\\testng-contacts.xml'
+    }
+
+    if (projects.hasProperty('browser')) {
+        systemProperty 'browser', "${browser}"
+    }
+    if (projects.hasProperty('target')) {
+        systemProperty 'target', "${target}"
+    }
+}
