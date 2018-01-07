@@ -15,28 +15,90 @@ public class ApplicationManager {
     private final Properties properties;
     private WebDriver wd;
     private String browser;
+    private RegistrationHelper registrationHelper;
+    private FtpHelper ftp;
+    private MailHelper mailHelper;
+    private AdministratorHelper administrator;
+    private NavigationHelper navigate;
+    private DataBaseHelper dataBase;
 
-    public ApplicationManager(String browser){
+    public ApplicationManager(String browser) {
         this.browser = browser;
         properties = new Properties();
     }
 
 
-    public void init()  throws IOException {
+    public void init() throws IOException {
         String target = System.getProperty("target", "local");
-        properties.load(new FileReader(new File(String.format("src/test/resources/%s.properties",target))));
-
-        if (browser.equals(BrowserType.FIREFOX)) {
-            wd = new FirefoxDriver();
-        } else if (browser.equals(BrowserType.CHROME)) {
-            wd = new ChromeDriver();
-        }
-        wd.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
-        wd.get(properties.getProperty("web.baseUrl"));
-
+        properties.load(new FileReader(new File(String.format("src/test/resources/%s.properties", target))));
     }
 
     public void stop() {
-        wd.quit();
+        if (wd != null) {
+            wd.quit();
+        }
+    }
+
+    public HttpSession newSession() {
+        return new HttpSession(this);
+    }
+
+    public String getProperty(String key) {
+        return properties.getProperty(key);
+    }
+
+    public RegistrationHelper registration() {
+        if (registrationHelper == null) {
+            registrationHelper =  new RegistrationHelper(this);
+        }
+        return registrationHelper;
+    }
+
+    public FtpHelper ftp() {
+        if (ftp == null) {
+            ftp = new FtpHelper(this);
+        }
+        return ftp;
+    }
+
+    public WebDriver getDriver() {
+        if (wd == null) {
+            if (browser.equals(BrowserType.FIREFOX)) {
+                wd = new FirefoxDriver();
+            } else if (browser.equals(BrowserType.CHROME)) {
+                wd = new ChromeDriver();
+            }
+            wd.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
+            wd.get(properties.getProperty("web.baseUrl"));
+        }
+        return wd;
+    }
+
+    public MailHelper mail() {
+        if (mailHelper == null) {
+            mailHelper = new MailHelper(this);
+        }
+        return mailHelper;
+    }
+
+    public AdministratorHelper admin() {
+        if (administrator == null) {
+            administrator = new AdministratorHelper(this);
+        }
+        return administrator;
+    }
+
+    public NavigationHelper navigate() {
+        if (navigate == null) {
+            navigate = new NavigationHelper(this);
+        }
+        return navigate;
+    }
+
+    public DataBaseHelper dataBase() {
+        if (dataBase == null) {
+            dataBase = new DataBaseHelper(this);
+        }
+        return dataBase;
     }
 }
