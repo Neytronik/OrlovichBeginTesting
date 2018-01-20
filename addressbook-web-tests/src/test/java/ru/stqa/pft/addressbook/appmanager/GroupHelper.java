@@ -6,6 +6,7 @@ import org.openqa.selenium.WebElement;
 import ru.stqa.pft.addressbook.model.GroupData;
 import ru.stqa.pft.addressbook.model.Groups;
 
+import java.sql.*;
 import java.util.List;
 
 public class GroupHelper extends HelperBase {
@@ -71,6 +72,7 @@ public class GroupHelper extends HelperBase {
     }
 
     private Groups groupCache = null;
+
     public Groups all() {
         if (groupCache != null) {
             return new Groups(groupCache);
@@ -84,6 +86,35 @@ public class GroupHelper extends HelperBase {
         }
         return new Groups(groupCache);
     }
+
+    public Groups dbAll() {
+        Connection conn = null;
+        if (groupCache != null) {
+            return new Groups(groupCache);
+        }
+        groupCache = new Groups();
+        try {
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/addressbook?user=root&password=");
+            Statement st = conn.createStatement();
+            ResultSet rs = st.executeQuery("select group_id,group_name,group_header,group_footer from group_list");
+            while (rs.next()) {
+                groupCache.add(new GroupData().withId(rs.getInt("group_id")).withName(rs.getString("group_name"))
+                        .withHeader(rs.getString("group_header")).withFooter(rs.getString("group_footer")));
+            }
+            rs.close();
+            st.close();
+            conn.close();
+
+        } catch (SQLException ex) {
+            System.out.println("SQLException: " + ex.getMessage());
+            System.out.println("SQLState: " + ex.getSQLState());
+            System.out.println("VendorError: " + ex.getErrorCode());
+        }
+
+        return new Groups(groupCache);
+
+    }
+
 
     public void delete(GroupData group) {
         selectGroupById(group.getId());

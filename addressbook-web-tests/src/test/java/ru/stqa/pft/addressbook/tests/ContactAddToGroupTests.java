@@ -4,12 +4,9 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.ContactData;
 import ru.stqa.pft.addressbook.model.Contacts;
+import ru.stqa.pft.addressbook.model.GroupData;
 
-import static org.hamcrest.CoreMatchers.equalTo;
-import static org.hamcrest.MatcherAssert.assertThat;
-
-public class ContactDeletionTests extends TestBase {
-
+public class ContactAddToGroupTests extends TestBase {
     @BeforeMethod
     public void ensurePreconditions() {
         app.goTo().homePage();
@@ -18,19 +15,14 @@ public class ContactDeletionTests extends TestBase {
                     .withNikName("Prist").withAddress("Saratov").withHomeTelephone("98765432").withMobile("123456789"));
             app.goTo().homePage();
         }
+        app.goTo().groupPage();
+        if (app.group().dbAll().size() == 0) {
+            app.group().create(new GroupData().withName("test1"));
+        }
     }
-
     @Test
-    public void ContactDeletionTests() {
-
-        Contacts before = app.сontact().dbAll();
-        ContactData deletedContact = before.iterator().next();
-        app.сontact().delete(deletedContact);
+    public void testContactAddToTests() {
         app.goTo().homePage();
-        assertThat(app.сontact().count(), equalTo(before.size()-1));
-        Contacts after = app.сontact().dbAll();
-
-        assertThat(after, equalTo(before.withOut(deletedContact)));
+        Contacts contacts = app.сontact().dbAll();
     }
-
 }

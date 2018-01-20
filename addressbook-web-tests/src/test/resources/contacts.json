@@ -11,31 +11,5 @@
     "workPhone": "9873210",
     "fax": "0000",
     "email": "test@yandex0.ru"
-  },
-  {
-    "firstName": "Peter1",
-    "middleName": "Vladimirovich1",
-    "lastName": "test1",
-    "company": "testOrg1",
-    "title": "test1",
-    "address": "Saratov/ 1",
-    "homeTelephone": "999901",
-    "mobile": "+79356478961",
-    "workPhone": "9873211",
-    "fax": "0001",
-    "email": "test@yandex1.ru"
-  },
-  {
-    "firstName": "Peter2",
-    "middleName": "Vladimirovich2",
-    "lastName": "test2",
-    "company": "testOrg2",
-    "title": "test2",
-    "address": "Saratov/ 2",
-    "homeTelephone": "999902",
-    "mobile": "+79356478962",
-    "workPhone": "9873212",
-    "fax": "0002",
-    "email": "test@yandex2.ru"
   }
 ]

@@ -15,7 +15,7 @@ public class ContactProfileInfoTests extends TestBase {
     @BeforeMethod
     public void ensurePreconditions() {
         app.goTo().homePage();
-        if (app.сontact().all().size() == 0) {
+        if (app.сontact().dbAll().size() == 0) {
             app.сontact().create(new ContactData().withFirstName("Petr").withMiddleName("Petrovich").withLastName("Petrov")
                     .withNikName("Prist").withAddress("Saratov").withHomeTelephone("98765432").withMobile("123456789"));
             app.goTo().homePage();
@@ -25,7 +25,7 @@ public class ContactProfileInfoTests extends TestBase {
     @Test
     public void testContactPhones() {
         app.goTo().homePage();
-        ContactData contact = app.сontact().all().iterator().next();
+        ContactData contact = app.сontact().dbAll().iterator().next();
         String contactInfoFromViewForm = app.сontact().infoFromProfileForm(contact);
         app.goTo().homePage();
 

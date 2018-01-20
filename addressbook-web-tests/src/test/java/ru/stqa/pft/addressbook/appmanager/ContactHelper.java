@@ -5,7 +5,10 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import ru.stqa.pft.addressbook.model.ContactData;
 import ru.stqa.pft.addressbook.model.Contacts;
+import ru.stqa.pft.addressbook.model.GroupData;
+import ru.stqa.pft.addressbook.model.Groups;
 
+import java.sql.*;
 import java.util.List;
 
 public class ContactHelper extends HelperBase {
@@ -82,6 +85,7 @@ public class ContactHelper extends HelperBase {
         type(By.name("mobile"), contactData.getMobile());
         type(By.name("work"), "12");
         type(By.name("fax"), "123");
+        contactCache = null;
     }
 
     public void create(ContactData contact) {
@@ -122,6 +126,37 @@ public class ContactHelper extends HelperBase {
         return new Contacts(contactCache);
     }
 
+    public Contacts dbAll() {
+        if (contactCache != null) {
+            return new Contacts(contactCache);
+        }
+        contactCache = new Contacts();
+        Connection conn = null;
+        try {
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/addressbook?user=root&password=");
+            Statement st = conn.createStatement();
+            ResultSet rs = st.executeQuery("select id,firstname,middlename,lastname,nickname,address,home,mobile," +
+                    "work,fax from addressbook");
+            while (rs.next()) {
+                contactCache.add(new ContactData().withId(rs.getInt("id"))
+                        .withFirstName(rs.getString("firstname")).withLastName(rs.getString("lastname"))
+                        .withMiddleName(rs.getString("middlename")).withNikName(rs.getString("nickname"))
+                        .withAddress(rs.getString("address")).withHomeTelephone(rs.getString("home"))
+                        .withMobile(rs.getString("mobile")).withFax(rs.getString("fax"))
+                                .withWorkPhone(rs.getString("work")));
+            }
+            rs.close();
+            st.close();
+            conn.close();
+
+        } catch (SQLException ex) {
+            System.out.println("SQLException: " + ex.getMessage());
+            System.out.println("SQLState: " + ex.getSQLState());
+            System.out.println("VendorError: " + ex.getErrorCode());
+        }
+        return new Contacts(contactCache);
+    }
+
     public String getContextField(By locator) {
         return wd.findElement(locator).getText();
     }
@@ -137,6 +172,7 @@ public class ContactHelper extends HelperBase {
     private void editContactById(int id) {
         wd.findElement(By.cssSelector("a[href='edit.php?id=" + id + "']")).click();
     }
+
     private void profileContactById(int id) {
         wd.findElement(By.cssSelector("a[href='view.php?id=" + id + "']")).click();
     }
@@ -176,13 +212,13 @@ public class ContactHelper extends HelperBase {
         String email2 = wd.findElement(By.name("email2")).getAttribute("value");
         String email3 = wd.findElement(By.name("email3")).getAttribute("value");
         String dayBith = wd.findElement(By.xpath("//*[@id=\"content\"]/form[1]/select[1]/option[1]")).getText();
-        String mouthBith= wd.findElement(By.xpath("//*[@id=\"content\"]/form[1]/select[2]/option[1]")).getText();
-        String yearBith= wd.findElement(By.xpath("//*[@id=\"content\"]/form[1]/input[19]")).getAttribute("value");
-        String birthday = dayBith+mouthBith+yearBith;
-        String dayAn= wd.findElement(By.xpath("//*[@id=\"content\"]/form[1]/select[3]/option[1]")).getText();
-        String mouthAn= wd.findElement(By.xpath("//*[@id=\"content\"]/form[1]/select[4]/option[1]")).getText();
-        String yearAn= wd.findElement(By.cssSelector("input[name='ayear']")).getAttribute("value");
-        String anniversary = dayAn+mouthAn+yearAn;
+        String mouthBith = wd.findElement(By.xpath("//*[@id=\"content\"]/form[1]/select[2]/option[1]")).getText();
+        String yearBith = wd.findElement(By.xpath("//*[@id=\"content\"]/form[1]/input[19]")).getAttribute("value");
+        String birthday = dayBith + mouthBith + yearBith;
+        String dayAn = wd.findElement(By.xpath("//*[@id=\"content\"]/form[1]/select[3]/option[1]")).getText();
+        String mouthAn = wd.findElement(By.xpath("//*[@id=\"content\"]/form[1]/select[4]/option[1]")).getText();
+        String yearAn = wd.findElement(By.cssSelector("input[name='ayear']")).getAttribute("value");
+        String anniversary = dayAn + mouthAn + yearAn;
         String homepage = wd.findElement(By.name("homepage")).getAttribute("value");
 
         wd.navigate().back();

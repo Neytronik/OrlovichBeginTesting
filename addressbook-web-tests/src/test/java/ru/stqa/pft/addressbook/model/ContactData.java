@@ -13,7 +13,9 @@ public class ContactData {
     private String middleName;
     @Expose
     private String lastName;
+    @Expose
     private String nikName;
+
     @Expose
     private String company;
     @Expose
@@ -26,6 +28,43 @@ public class ContactData {
     private String mobile;
     @Expose
     private String workPhone;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ContactData that = (ContactData) o;
+        return id == that.id &&
+                Objects.equals(firstName, that.firstName) &&
+                Objects.equals(middleName, that.middleName) &&
+                Objects.equals(lastName, that.lastName) &&
+                Objects.equals(nikName, that.nikName) &&
+                Objects.equals(company, that.company) &&
+                Objects.equals(title, that.title) &&
+                Objects.equals(address, that.address) &&
+                Objects.equals(homeTelephone, that.homeTelephone) &&
+                Objects.equals(mobile, that.mobile) &&
+                Objects.equals(workPhone, that.workPhone) &&
+                Objects.equals(fax, that.fax) &&
+                Objects.equals(email, that.email) &&
+                Objects.equals(email2, that.email2) &&
+                Objects.equals(email3, that.email3) &&
+                Objects.equals(homepage, that.homepage) &&
+                Objects.equals(birthday, that.birthday) &&
+                Objects.equals(anniversary, that.anniversary) &&
+                Objects.equals(address2, that.address2) &&
+                Objects.equals(phone2, that.phone2) &&
+                Objects.equals(notes, that.notes) &&
+                Objects.equals(photo, that.photo) &&
+                Objects.equals(allPhones, that.allPhones);
+    }
+
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(id, firstName, middleName, lastName, nikName, company, address, homeTelephone, mobile, workPhone, fax);
+    }
+
     @Expose
     private String fax;
     @Expose
@@ -256,22 +295,6 @@ public class ContactData {
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 '}';
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        ContactData that = (ContactData) o;
-        return id == that.id &&
-                Objects.equals(firstName, that.firstName) &&
-                Objects.equals(lastName, that.lastName);
-    }
-
-    @Override
-    public int hashCode() {
-
-        return Objects.hash(id, firstName, lastName);
     }
 
     public int getId() {

@@ -54,32 +54,22 @@ public class ContactCreationTests extends TestBase {
 
     @Test(dataProvider = "validContactsFromJson")
     public void testContactCreation(ContactData contact) {
-
-        app.goTo().homePage();
-        Contacts before = app.сontact().all();
-//        File photo = new File("src/test/resources/contact.png");
-//        ContactData contact = new ContactData().withFirstName("Petr").withMiddleName("Petrovich").withLastName("Petrov")
-//                .withNikName("Prist").withAddress("Saratov").withHomeTelephone("98765432").withMobile("123456789").withPhoto(photo);
+        Contacts before = app.сontact().dbAll();
         app.сontact().create(contact);
-        app.goTo().homePage();
-        assertThat(app.сontact().count(), equalTo(before.size() + 1));
-        Contacts after = app.сontact().all();
+        assertThat(app.сontact().dbAll().size(), equalTo(before.size() + 1));
+        Contacts after = app.сontact().dbAll();
         assertThat(after, equalTo(before.withAdded(contact.withId(after.stream().mapToInt((c) -> c.getId()).max().getAsInt()))));
     }
 
     @Test(enabled = false)
     public void testBadContactCreation() {
-        app.goTo().homePage();
-        Contacts before = app.сontact().all();
+        Contacts before = app.сontact().dbAll();
         ContactData contact = new ContactData().withFirstName("Petr'").withMiddleName("Petrovich").withLastName("Petrov")
                 .withNikName("Prist").withAddress("Saratov").withHomeTelephone("98765432").withMobile("123456789");
         app.сontact().create(contact);
-        app.goTo().homePage();
-        assertThat(app.сontact().count(), equalTo(before.size()));
-        Contacts after = app.сontact().all();
-
+        assertThat(app.сontact().dbAll().size()-1, equalTo(before.size()));
+        Contacts after = app.сontact().dbAll();
         assertThat(after, equalTo(before));
-
     }
 
 }
