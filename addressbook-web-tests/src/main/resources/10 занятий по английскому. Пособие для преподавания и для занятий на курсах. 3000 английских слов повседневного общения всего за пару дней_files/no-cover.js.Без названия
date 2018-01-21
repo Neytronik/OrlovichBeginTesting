@@ -1,0 +1,71 @@
+/*[101269] Замена отсутствующей обложки на модный блок с переводимым текстом*/
+function setNoImgCovers() {
+	loadNoImgCoversCss();
+	setErrorCover();
+	setMissingCover();
+}
+
+function setErrorCover() {
+	var $imgsWithErr = $('img[data-cover-error=1]');
+	if ($imgsWithErr.length) {
+		$imgsWithErr.each(function(indx, element) {
+			var $parent = $(element).parent();
+			var $width = $(element).attr('width');
+			var coverWidthText = $width > 89 && $(element).attr('height') > 100;
+			if (!$parent.find('.book-error-cover').length) {
+				$parent.prepend(getErrorCoverTemplate({
+					widthText: coverWidthText,
+					coverHeight: $(element).attr('height'),
+					coverWidth: $(element).attr('width')
+				}));
+			}
+		});
+	}
+}
+
+function getErrorCoverTemplate(options) {
+	var error = options.widthText ? '' +
+		'<span class="book-error-cover__text" style="font-size: ' +
+		setErrorCoverFontSize(options.coverHeight) + 'px;">' +
+			__l('Ошибка<br/>при загрузке<br/>обложки') +
+		'</span>' : '';
+	var html = '' +
+	'<span class="book-error-cover" style="max-width: ' + options.coverWidth + 'px;">' +
+		'<span class="book-error-cover__inner">' +
+			'<span class="book-error-cover__img"></span>' + error +
+		'</span>' +
+	'</span>';
+	return html;
+}
+
+function setErrorCoverFontSize(coverHeight) {
+	var fontSize = 0;
+	var maxSizePercent = coverHeight * 33 / 100;
+	fontSize = Math.round(maxSizePercent / 5);
+	if (fontSize > 30) {
+		fontSize = 30;
+	}
+	return fontSize;
+}
+
+function setMissingCover() {
+	var $booksNoCover = $('.book-no-cover');
+	if ($booksNoCover.length) {
+		$booksNoCover.each(function(indx, element) {
+			var $coverWidth = $(element).prev().attr('width');
+			var $coverHeight = $(element).prev().attr('height');
+			if ($coverWidth > 89) {
+				$(element).find('.book-no-cover__text').css({
+					'font-size':  setErrorCoverFontSize($coverHeight) + 'px',
+					'visibility': 'visible'
+				});
+			}
+		});
+	}
+}
+
+function loadNoImgCoversCss() {
+	if (!$('link[href*="no-cover.css"]').length) {
+		litres.loadCss('/static/litres/modules/no-cover/css/no-cover.css');
+	}
+}

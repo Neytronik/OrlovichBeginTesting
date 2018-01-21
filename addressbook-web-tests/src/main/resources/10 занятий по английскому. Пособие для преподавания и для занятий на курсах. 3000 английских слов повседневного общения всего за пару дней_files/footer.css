@@ -1,0 +1,55 @@
+/* footer */
+.footer{width:100%;min-width:775px;min-height:170px;padding:40px 0 10px;margin:-220px auto 0;background-color:#F0F0F0;}
+.footer .max_w{padding:0 5px 0 5px;}
+.max_w{max-width:1500px;}
+.footer table{width:100%;}
+.footer td{padding:0 6px;text-align:left;}
+.footer th{padding:0 6px 10px;text-align:left;color:#B0B0B0;font-size:14px; line-height: 16px; font-weight: bold;vertical-align:middle;}
+.footer a, .footer a:visited{display:block;font-size:13px;line-height:15px;color:#666666;padding-bottom:7px;}
+.blb{float:left;width:100%;height:1px;overflow:hidden;position: absolute;}
+#dynamics_padd{max-width:1600px;min-width:775px;margin:0 auto;}
+.footer-wrap_biblio_user{min-height:200px;margin-top:-170px;}
+.footer.footer-wrap_biblio_user .header{padding:0;line-height:13px;}
+.footer.footer-wrap_biblio_user .footer_soc_icons li{padding-top:1px;}
+.footer.footer-wrap_biblio_user .site_name{padding-top:21px;}
+.footer-wrap_is_school{min-height:150px;margin:-120px auto 0;}
+.footer.footer-wrap_is_school .site_name{padding-top:46px;}
+.footer.footer-wrap_is_school .footer_soc_icons li{padding-top:15px;}
+/* footer social networks */
+.footer_soc_icons .footer_soc_icon {display: inline-block; padding: 0; width: 20px; height: 20px; background: url(/static/litres/i/footer/soc-icons.png);
+    background-image: url(/static/litres/i/footer/soc-icons.svg); margin-right: 5px;}
+.footer_soc_icons .footer_soc_icon_vk {background-position: 0 0;}
+.footer_soc_icons .footer_soc_icon_ok {background-position: -20px 0;}
+.footer_soc_icons .footer_soc_icon_fb {background-position: -40px 0;}
+.footer_soc_icons .footer_soc_icon_inst {background-position: -60px 0;}
+.footer_soc_icons .footer_soc_icon_tw {background-position: -80px 0;}
+.footer_soc_icons .footer_soc_icon_g {background-position: -100px 0;}
+.footer_soc_icons .footer_soc_icon_mail {background-position: -120px 0;}
+.footer_soc_icons .footer_soc_icon_vk:hover {background-position: 0 -20px;}
+.footer_soc_icons .footer_soc_icon_ok:hover {background-position: -20px -20px;}
+.footer_soc_icons .footer_soc_icon_fb:hover {background-position: -40px -20px;}
+.footer_soc_icons .footer_soc_icon_inst:hover {background-position: -60px -20px;}
+.footer_soc_icons .footer_soc_icon_tw:hover {background-position: -80px -20px;}
+.footer_soc_icons .footer_soc_icon_g:hover {background-position: -100px -20px;}
+.footer_soc_icons .footer_soc_icon_mail:hover {background-position: -120px -20px;}
+
+
+.site_name{color:#666666; font-size:11px; padding: 13px 0 0 0;}
+.footer .is_school_li{padding-bottom:36px;}
+.footer .header{display:block; padding:2px 0 15px; color:#B0B0B0; font-size:14px; line-height:16px; font-weight:bold;}
+.partners_list{overflow:hidden; border-top:1px dotted #c7c7c7; margin:0 4px; padding:25px 0 2px 0;}
+.partners_list .name{float:left; width:109px; font-size:18px; color:#b0b0b0; padding:9px 0 0 0;}
+.partners_list a{background:url(/static/new/i/new/partners_list.png) no-repeat 0 0; float:left; height:46px; line-height:46px; margin-right:30px;}
+.partners_list .kykyru{width:130px; background-position:0 -54px; margin-right:37px;}
+.partners_list .malina{width:158px; background-position:-167px -54px; margin-right:48px;}
+.partners_list .mnogo-ru{width:109px; background-position:-373px -54px; margin-right:30px;}
+.partners_list .ozon-ru{width:149px; background-position:-512px -54px; margin-right:39px;}
+.partners_list .perekrestok{width:185px; background-position:-700px -54px; margin-right:40px;}
+.partners_list .sberbank-spasibo{width:106px; background-position:-925px -54px; margin-right:0;}
+
+.partners_list .kykyru:hover{background-position:0 0;}
+.partners_list .malina:hover{background-position:-167px 0;}
+.partners_list .mnogo-ru:hover{background-position:-373px 0;}
+.partners_list .ozon-ru:hover{background-position:-512px 0;}
+.partners_list .perekrestok:hover{background-position:-700px 0;}
+.partners_list .sberbank-spasibo:hover{background-position:-925px 0;}

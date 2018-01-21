@@ -1,0 +1,57 @@
+var swHandler;$(function(){$(window).on('beforeunload',function(){checkIgnoredMetrics(true);});var litres=window.litres||{user:typeof litres_user_id!=='undefined'?litres_user_id:0,tests:[],webpush_status:typeof webpush_status!=='undefined'?webpush_status:0};if($('#main-div').length){litres.tests['test224']=$('#main-div').attr('data-test');}
+var ab_test=false;if(/\bwebpush=1\b/i.test(window.location.search)||litres.tests['test224']=='test'){ab_test=true;}
+var is_pda=window.location.hostname=='pda.litres.ru'?true:false;var debug=true;function debugLog(text){if(!debug){return false;}
+console.info(text);}
+var metricStorage={deferred:[],yaLoad:false};function checkSWRegistration(){navigator.serviceWorker.getRegistration()
+.then(function(r){swHandler=r;if(!swHandler){registerServiceWorker();}}).catch(function(e){debugLog('Service worker error: '+e+'.');});}
+function registerServiceWorker(){navigator.serviceWorker.register('/sw.js')
+.then(function(r){swHandler=r;debugLog('Service worker registered with scope: '+swHandler.scope+'.');checkSWStatus();})
+.catch(function(e){debugLog('Service worker error on registration: '+e+'.');});}
+function getSWready(){return navigator.serviceWorker.ready
+.then(function(registration){return registration;});}
+function startSWstuff(){if('serviceWorker'in navigator){debugLog('Service workers supported.');checkSWRegistration();checkSWMetrics();if(getCookie('sw_init')){checkIgnoredMetrics();return;}
+setCookie('sw_init',Date.now(),0,'/',0,15);var startNotifPerm=Notification.permission;if((is_pda||!ab_test)&&litres.webpush_status!=1&&!isSubscrCookie()){if(Notification.permission==='default'){trackThis('webpush_dialogshow');localStorage.setItem('litres_webpush_ds',1);}
+Notification.requestPermission().then(function(result){if(result==='denied'&&startNotifPerm==='default'){trackThis('webpush_denied');}
+if(result==='default'&&startNotifPerm==='default'){setSubscrCookie();}});}
+getSWready().then(function(r){swHandler=r;debugLog('Service workers fired ready.');checkSWStatus();if(!checkNotificationSupport()){return;}
+if(!checkPermissionSupport()){return;}
+if(!checkPushManager()){return;}
+checkSWSubscr();});}else{debugLog('Service workers aren\'t supported in this browser.');}}
+function runWebpushGUI(){var $webpush_popup=$('#web-push-popup');var $close_btn=$webpush_popup.find('.web-push-close');var $confirm_btn=$webpush_popup.find('.web-push-coolbtn');$close_btn.on('click',function(){$webpush_popup.hide();trackThis('webpush_denied');});$confirm_btn.on('click',function(){$webpush_popup.hide();askSWSubscr();});$(document).on('click',function(e){if(!$(e.target).closest('#web-push-popup').length){$webpush_popup.hide();}});$webpush_popup.show();}
+function checkSWMetrics(){if(getCookie('sw_metrics')){var cookieDate=new Date(parseInt(getCookie('sw_metrics'))).getDate();var today=new Date().getDate();if(cookieDate==today){return;}}
+setCookie('sw_metrics',Date.now(),1,'/');getSWready().then(function(r){swHandler=r;swHandler.pushManager.getSubscription()
+.then(function(subscription){if(subscription){trackThis('webpush_totalsubscribed');}else{if(Notification.permission!=='denied'){trackThis('webpush_totalavailable');}}});if(Notification.permission==='denied'){trackThis('webpush_totalblocked');}});}
+function checkIgnoredMetrics(no_checking){if(localStorage.litres_webpush_ds==0){return;}
+var cookieDate=getCookie('sw_init');if(cookieDate||no_checking){if(Date.now()-cookieDate>180000&&Notification.permission=='default'||no_checking&&Notification.permission=='default'){trackThis('webpush_ignored');localStorage.setItem('litres_webpush_ds',0);}}}
+function checkNotificationSupport(){if(!(swHandler.showNotification)){debugLog('Show notification not supported.');return false;}
+debugLog('Show notification supported.');return true;}
+function checkPermissionSupport(){if(Notification.permission==='denied'){debugLog('Notification is denied by client.');if(localStorage['webpush_token']){trackThis('webpush_blocked');localStorage.removeItem('webpush_token');localStorage.removeItem('webpush_user_id');}
+return false;}
+return true;}
+function checkPushManager(){if(!('PushManager'in window)){debugLog('Push manager not supported.');return false;}
+debugLog('Push manager supported.');return true;}
+function checkSWStatus(){if(swHandler.installing){debugLog('Service worker installing.');}else if(swHandler.waiting){debugLog('Service worker installed.');}else if(swHandler.active){debugLog('Service worker active.');}}
+function checkSWSubscr(){swHandler.pushManager.getSubscription()
+.then(function(subscription){if(!subscription){debugLog('Service worker no subscription.');if((is_pda||!ab_test)&&!isSubscrCookie()){setSubscrCookie();askSWSubscr();}
+if(!is_pda&&ab_test&&!isSubscrCookie()){setSubscrCookie();runWebpushGUI();}
+return;}
+debugLog('Service worker have subscription.');updateSubscriptionOnServer('web_push_update',subscription.endpoint);})
+.catch(function(e){debugLog('Error during getSubscription(): '+e+'.');});}
+function isSubscrCookie(){return!!getCookie('sw_subscr');}
+function setSubscrCookie(){setCookie('sw_subscr',1,7,'/');}
+function askSWSubscr(){if(localStorage.litres_webpush_ds==0){trackThis('webpush_dialogshow');localStorage.setItem('litres_webpush_ds',1);}
+swHandler.pushManager.subscribe({userVisibleOnly:true}).then(function(subscription){debugLog('Service worker got subscription.');trackThis('webpush_subscribed');updateSubscriptionOnServer('web_push_update',subscription.endpoint);})
+.catch(function(e){debugLog('Error during subscribe(): '+e+'.');checkPermissionSupport();});}
+function updateSubscriptionOnServer(type,endpoint){debugLog(endpoint);var tmp=endpoint.split('/');var token=tmp[tmp.length-1];var subscr_update=true;if(type=='web_push_update'){if(litres.user){if(makeFunWithToken(token)==localStorage['webpush_token']&&litres.user==localStorage['webpush_user_id']&&parseInt(litres.webpush_status)!==0){debugLog('Token hash and user same, nothing to update.');subscr_update=false;}}else{if(!getCookie('shadowsid')){trackThis('webpush_noshadow');createStatuser();subscr_update=true;}}
+if(!subscr_update){return false;}
+trackThis('webpush_tokenchange');if(!getCookie('wp_subscr_time')){setCookie('wp_subscr_time',Date.now(),356*100,'/');}}
+localStorage['webpush_token']=makeFunWithToken(token);localStorage['webpush_user_id']=litres.user;debugLog('Send data to server.');var Request={url:'/pages/ajax_empty2/',Method:'POST',params:{action:type,token:token},OnData:function(data){checkShadowsidAftUpdate();},OnDataFail:function(data){checkShadowsidAftUpdate();}};debugLog(Request);CSRF.sendRequest(Request);debugLog('token: '+localStorage['webpush_token']+'.');}
+function checkShadowsidAftUpdate(){if(!litres.user&&!getCookie('shadowsid')){trackThis('webpush_noshadow_after');}}
+function makeFunWithToken(token){return token.substr(-30);}
+function sw_send_message(){sendMessage({user:litres.user}).then(function(){debugLog('Sended litres.id to sw.');}).catch(function(e){debugLog('Error during sw_send_message(): '+e+'.');});}
+function sendMessage(message){return new Promise(function(resolve,reject){var messageChannel=new MessageChannel();messageChannel.port1.onmessage=function(event){if(event.data.error){reject(event.data.error);}else{resolve(event.data);}};debugLog(message);try{swHandler.active.postMessage({text:message,port:messageChannel&&messageChannel.port2},[messageChannel&&messageChannel.port2]);}catch(e){reg.active.postMessage({text:message});}});}
+function createStatuser(){var Request={url:'/pages/ajax_empty2/',Method:'POST',params:{action:'create_stat_user'},OnData:function(data){if(data.actions_output&&data.actions_output.shadowsid){setCookie('shadowsid',data.actions_output.shadowsid,90,'');}}};GUJ.PutRequest(Request);}
+function trackThis(event){if(typeof yaCounter2199583!=='undefined'){metricStorage.yaLoad=true;_trackThis(event);}
+if(!metricStorage.yaLoad){metricStorage.deferred.push(function(){_trackThis(event);});}
+function _trackThis(event){yaCounter2199583.reachGoal(event);debugLog('trackThis event: '+event+'.');}}
+jQuery(document).on('yacounter2199583inited',function(){if(metricStorage.deferred.length){for(var i=0;i<metricStorage.deferred.length;i++){metricStorage.deferred[i]();}}});startSWstuff();});

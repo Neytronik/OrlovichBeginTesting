@@ -1,0 +1,88 @@
+var autoResize = function() {
+	var INFO_HEIGHT = 358;
+	var header = jQuery('#header');
+	var coverBox = jQuery('.coverBox');
+	var cover = jQuery('#cover');
+	var coverBottom = jQuery('#coverBottom');
+	var startapInformer = jQuery('#startap_informer');
+	var info = jQuery('.info');
+	var infoLabel = info.find('label');
+	var infoImg = info.find('.instruction');
+	var infoButton = info.find('.button');
+	var infoButtonBold = infoButton.find('b');
+	
+	var headerHeight = header.height();
+	var headerMargin = parseInt(header.css('margin-bottom'));
+	var contentPadding = parseInt(startapInformer.css('padding-top'));
+	var footerMargin = parseInt(coverBox.css('margin-bottom'));
+	var startapInformerWidth = startapInformer.width();
+	var startapInformerHeight = startapInformer.height();
+	var authorName = jQuery('#author_name');
+	var bookTitle = jQuery('#book_title');
+	
+	var authorNameFontSizeRatio = 
+		parseInt(authorName.css('font-size')) / startapInformerWidth;
+	var bookTitleFontSizeRatio = 
+		parseInt(bookTitle.css('font-size')) / startapInformerWidth;
+	
+	var width, height, originalWidth, originalHeight;
+	var coverLoaded = false;
+	
+	var resizeStartScreen = function() {
+		var startapInformerWidth = Math.floor(document.body.clientWidth * 0.65);
+		
+		var height = document.body.clientHeight * 0.85 - headerHeight - headerMargin - contentPadding - footerMargin;
+		var coverHeight = height - coverBottom.height() - 10;
+		authorName.css({'font-size': coverHeight * 0.023});
+		bookTitle.css({'font-size': coverHeight * 0.032});
+
+		if (coverLoaded) {
+			var width = Math.floor(originalWidth * height/originalHeight);
+		} else {
+			var width = Math.floor(height/1.27);
+			width = width > 551 ? 551 : width;
+		}
+		
+		if (originalWidth > originalHeight) { // stupid hack
+			coverBox.width(width/1.27);
+			cover.width(width/1.27).height(coverHeight/1.27);
+		} else {
+			coverBox.width(width);
+			cover.width(width).height(coverHeight);
+		}
+		
+		var font_size = Math.floor(height * 0.8);
+		font_size = font_size > INFO_HEIGHT ? INFO_HEIGHT : font_size;
+		var img_height_ratio = info.height()/info.width();
+		
+		info.css('font-size', font_size + 'px');
+		infoButtonBold.css('font-size', font_size * 18 / INFO_HEIGHT);
+		info.parent().width(font_size / img_height_ratio);
+	};
+	
+	jQuery(window).resize(resizeStartScreen);
+	resizeStartScreen();
+	
+	if (Tools.PFURL.cover) {
+		jQuery('#cover_preload').attr('src', Tools.PFURL.cover)
+			.load(function() {
+				var coverPreload = jQuery(this);
+				originalWidth = coverPreload.width();
+				originalHeight = coverPreload.height();
+				var height = document.body.clientHeight * 0.85 - headerHeight - headerMargin - contentPadding - footerMargin;
+				var width = Math.floor(originalWidth * height/originalHeight);
+				coverPreload.remove();
+				if (originalWidth > originalHeight) { // stupid hack
+					width = 551;
+					var cheight = Math.floor(originalHeight * width/originalWidth);
+					cover.height(cheight);
+					coverBox.height(cheight);
+				}
+				cover.width(width).attr('src', Tools.PFURL.cover);
+				coverBox.width(width);
+				coverLoaded = true;
+			});
+	} else {
+		coverBox.removeClass('spinner');
+	}
+}

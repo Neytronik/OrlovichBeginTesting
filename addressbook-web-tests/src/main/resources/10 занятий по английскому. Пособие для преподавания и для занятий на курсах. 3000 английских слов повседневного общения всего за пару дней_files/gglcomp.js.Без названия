@@ -1,0 +1,100 @@
+var mg={p5907795:{tr:1004869236,hs:'Wd7JCLy40wIQ9KyU3wM'},p5906595:{tr:1008874344,hs:'XWV_CLjizgIQ6OaI4QM'},p5906565:{tr:1007202124,hs:'5mABCKyY4wIQzN6i4AM'},p6208275:{tr:1007722993,hs:'GkIzCJf7pwIQ8cPC4AM'},p6208025:{tr:1007772705,hs:'yw5HCOex8gIQocjF4AM'},p6211125:{tr:959102710,hs:'wembCJKUygMQ9v2qyQM'},p6211295:{tr:1006870639,hs:'Q33sCIn20QIQ78CO4AM'},p5907825:{tr:1007100085,hs:'SztJCJu94wIQtcGc4AM'},p5907635:{tr:1006176827,hs:'DYh7CO3_6gIQu5Tk3wM'},p5906695:{tr:1002912372,hs:'WyM_CMSigwMQ9PSc3gM'},p6211215:{tr:947347971,hs:'ROjXCNW24wMQg8TdwwM'},p5906425:{tr:1006255807,hs:'qoCACMHXyAIQv_3o3wM'},p6208215:{tr:1016724974,hs:'juDwCKLB6wIQ7vvn5AM'},p5907745:{tr:948590325,hs:'btqzCIP81gMQ9a2pxAM'},p5906415:{tr:947326368,hs:'3gzZCJiczQMQoJvcwwM'},p5906765:{tr:1014622784,hs:'5cEpCLjH8AIQwNTn4wM'},p5907575:{tr:955156257,hs:'jQ2CCJffvQMQoY66xwM'},p6211415:{tr:1006870759,hs:'UnVICJH10QIQ58GO4AM'},p5906045:{tr:953639323,hs:'KGeBCP2x5QMQm8PdxgM'},p5907525:{tr:1011556055,hs:'OaFGCNn86QIQ172s4gM'},p6211035:{tr:1004480905,hs:'BCGTCJ-evgMQidP83gM'},p5906175:{tr:1009003201,hs:'0vd9CMfw0gIQwdWQ4QM'},p6208305:{tr:957016730,hs:'XlYpCJ6WuQMQmtWryAM'},p5907175:{tr:953330563,hs:'HBBECK2s5QMQg9fKxgM'},p5906655:{tr:1005599846,hs:'bYk9CJqT3QIQ5vjA3wM'},p5906855:{tr:1003478313,hs:'ntrkCN_02gIQqbq_3gM'},p5906635:{tr:948708064,hs:'ocWfCOCE5wMQ4MWwxAM'},p5906155:{tr:1012293103,hs:'ArDRCOms3gIQ77vZ4gM'},p5907065:{tr:1005685422,hs:'ZINlCKLW2AIQrpXG3wM'},p5906605:{tr:948397138,hs:'N1hiCLaL1gMQ0sidxAM'},p6211185:{tr:1017879250,hs:'AyNFCI7j6QIQ0rWu5QM'},p6211155:{tr:949195506,hs:'hu7lCI66ywMQ8qXOxAM'},p6211385:{tr:1007151568,hs:'LrkrCKid4wIQ0NOf4AM'},p5906955:{tr:1001343210,hs:'4UJ8CL7q6AIQ6pG93QM'},p5906325:{tr:1003222572,hs:'RruoCKSmgwMQrOyv3gM'},p5907325:{tr:1006435947,hs:'BIwbCKWc5gIQ6_zz3wM'},p6211095:{tr:1018778152,hs:'0W_gCOC03QIQqKTl5QM'},p5906195:{tr:1004392819,hs:'-O2qCO395gIQ86L33gM'},p5907455:{tr:1007815830,hs:'9pm5CPq_1QIQlpnI4AM'},p5907305:{tr:1009277123,hs:'km0LCK2B3wIQw7Gh4QM'},p5906255:{tr:1003798923,hs:'ADCtCO3hyAIQi4PT3gM'},p5906625:{tr:1007686052,hs:'mtmRCLT75gIQpKPA4AM'},p5906575:{tr:1004269314,hs:'06odCM6Z6gIQgt7v3gM'},p5907505:{tr:953329843,hs:'mCI5CMWp5QMQs9HKxgM'},p6210945:{tr:957016610,hs:'zoE7CKaVuQMQotSryAM'},p5906135:{tr:953637763,hs:'UVSwCJWv5QMQg7fdxgM'},p5907845:{tr:1002876738,hs:'IFvVCO7elQMQwt6a3gM'},p5907285:{tr:948591045,hs:'Fi0xCIv71gMQxbOpxAM'},p6211245:{tr:1004269434,hs:'68sCCNaY6gIQ-t7v3gM'},p6210885:{tr:1003722123,hs:'YzERCPXgyAIQi6vO3gM'},p6208145:{tr:1007099729,hs:'EbyrCJ_0-gIQ0b6c4AM'},p6207965:{tr:1009003681,hs:'FGMmCM_v0gIQodmQ4QM'},p6208155:{tr:948941464,hs:'jwurCLi-5gMQmOW-xAM'},p6211065:{tr:1004223029,hs:'_UywCOPr7AIQtfTs3gM'},p5906645:{tr:1018560442,hs:'00pLCNbb5AIQuv_X5QM'},p6210975:{tr:1007392708,hs:'VNzfCLyN4AIQxK-u4AM'},p5906905:{tr:1004869836,hs:'QtmRCMy20wIQzLGU3wM'},p5906145:{tr:1007795953,hs:'OyfJCI_8pwIQ8f3G4AM'},p5906315:{tr:1006292841,hs:'rRN9CPfXoAMQ6Z7r3wM'},p5907805:{tr:1008857515,hs:'7yIACIWz5gIQq-OH4QM'},p6210855:{tr:1007607821,hs:'MoXzCKPjvgIQjcC74AM'},p5906585:{tr:1009277243,hs:'kDD8CL3_3gIQu7Kh4QM'},p5906555:{tr:1004568011,hs:'Y1LJCPWmswIQy_uB3wM'},p5907395:{tr:1005598886,hs:'LDbUCKKS3QIQpvHA3wM'},p6211355:{tr:1018531792,hs:'yQVzCOiz3QIQ0J_W5QM'},p6211005:{tr:1007392468,hs:'udDNCMSM4AIQ1K2u4AM'},p5906615:{tr:1006794089,hs:'zTY3CKfz-gIQ6eqJ4AM'},p5907375:{tr:1009277003,hs:'jclJCMX-3gIQy7Ch4QM'},p5906985:{tr:1008902518,hs:'lrv6CNq50wIQ9sKK4QM'},p6208185:{tr:1008926795,hs:'mrfaCO3Y5wUQy4CM4QM'},p6210915:{tr:950758373,hs:'guCnCOuZ6gMQ5detxQM'},p5907095:{tr:1011634449,hs:'Oe4uCL-j1gIQkaKx4gM'},p5907235:{tr:1008527879,hs:'zyheCPHp5QIQh9Tz4AM'},p5907115:{tr:1007355075,hs:'s6_LCI310wIQw4ms4AM'},p6208115:{tr:947909343,hs:'xFsfCIH4ywMQ3-X_wwM'},p6208245:{tr:1006182127,hs:'1X_mCNHVyAIQ773k3wM'},p5906395:{tr:1001652930,hs:'XxkHCK7s6AIQwoXQ3QM'},p5906055:{tr:1003799403,hs:'NjcICM3lyAIQ64bT3gM'},p5906835:{tr:1007690280,hs:'GLSDCLCjzQIQqMTA4AM'},p5906485:{tr:1009538607,hs:'h5a4CLGN1AIQr6yx4QM'},p5907135:{tr:1007685572,hs:'34PFCLz65gIQxJ_A4AM'},p5906925:{tr:1003973669,hs:'_ZAPCPPp7AIQpdjd3gM'},p5906725:{tr:948279894,hs:'oAxUCJLV0wMQ1rSWxAM'},p6207995:{tr:1001452278,hs:'_w6zCIqs7QIQ9uXD3QM'},p5906215:{tr:1005992982,hs:'Ex76CJrX2AIQlvjY3wM'},p5907545:{tr:1011633969,hs:'_yImCMei1gIQsZ6x4gM'},p5906535:{tr:1005952788,hs:'h_3uCLTJigMQlL7W3wM'},p5906305:{tr:951459309,hs:'WhI6CNvv1AMQ7bvYxQM'},p6208055:{tr:1001452158,hs:'U1umCJKr7QIQ_uTD3QM'},p5907005:{tr:947638727,hs:'dCDJCOm3-wMQx6PvwwM'},p6208085:{tr:1008347750,hs:'oM3oCLLQ3gIQ5tTo4AM'},p5906165:{tr:949127111,hs:'ZH8pCKnEvgMQx4_KxAM'},p6211325:{tr:951153069,hs:'GuT6COvt1AMQrePFxQM'},p5906435:{tr:950336107,hs:'ek0ECMWthAQQ6_STxQM'}};var ya_orders=[];var tmp_ya_order;var sent_yandex;var sent_cityads;var sent_criteo;var sent_admitad;var sent_advaction;var sent_mailru;var sent_googleadwords;var sent_facebook_targeting;var mail_tar_purchase;var rtb_house_purchase;var sent_actionpay;var set_bought_cookie;var gaPusher=function(readydata){this.cmds=new Array();for(var key=0;key<readydata.length;key++){this.push(readydata[key]);}
+var stored=getCookie("_gaparserdata");if(!stored)return;if(typeof _gaq=='undefined')return;var stored_cmds=stored.match(/\[([^\]]+)\]/g);for(var key=0;key<stored_cmds.length;key++){var cmd=stored_cmds[key].substr(1,stored_cmds[key].length-2).split(',');for(var i=0;i<cmd.length;i++){cmd[i]=unescape(this.unescape(cmd[i].trim()));}
+var ConvCode='';var ConvPrice=10;switch(cmd[0]){case"_addTrans":{if(tmp_ya_order)tmp_ya_order.order_id=cmd[1].substring(7);break;}
+case"_addItem":{if(tmp_ya_order)addGoodsInYaOrder(tmp_ya_order,cmd[2],cmd[3],cmd[5]);break;}
+case"_trackTrans":{ConvCode='nMGgCNrznwMQ5oaNywM';ConvPrice=500;if(tmp_ya_order)tmp_ya_order=undefined;break;}
+case"_trackEvent":{switch(cmd[1]){case"Register":{ConvPrice=50
+ConvCode='GiC-CKqIoAMQ5oaNywM';if(UserPartnerID=='5958845'){var luxup=new Image(1,1);luxup.src='http://luxup.ru/tr/1844/'
++'&r='+escape(document.referrer)
++'&t='+(new Date()).getTime()
++'&tref='+escape(document.location.href+'&action=reg');}
+if(UserPartnerID=='10211265'){var solovay=new Image(1,1);solovay.src='http://ad.adriver.ru/cgi-bin/rle.cgi?sid=179325&sz=registration&bt=55&pz=0&rnd=1382413115';}
+break;}
+case"ArtToBasket":{var art_data=cmd[3].split(':');var o=newYaOrder('basket',art_data[2]);o.order_id=art_data[4].substring(7);addGoodsInYaOrder(o,art_data[1],art_data[3],art_data[2]);break;}
+case"ArtFromBasket":{var art_data=cmd[3].split(':');var o=newYaOrder('remove-from-basket',art_data[2]);o.order_id=art_data[4].substring(7);addGoodsInYaOrder(o,art_data[1],art_data[3],art_data[2]);break;}
+case"BasketPurchaseOk":{tmp_ya_order=newYaOrder('order',cmd[4]);tmp_ya_order.user=cmd[3];break;}}
+break;}
+case"_trackOther":{TrackPartnerBuy(cmd[1],cmd[2],cmd[3],cmd[4]);break;}
+case"_trackAnyEvent":{var data=cmd[1];BodyLoadFunc.push({'AnEv2':function(){AnalyticsEvent(data);}});break;}
+case"_trackCookieAdd":{var cookieTracker='_IDSGA',val=getCookie(cookieTracker),arr=[];if(getCookie(cookieTracker))arr=unescape(getCookie(cookieTracker)).split(',');if(arr.indexOf(cmd[1])==-1)arr.push(cmd[1]);setCookie(cookieTracker,escape(arr),365,'/');break;}}
+if(ConvPrice){var AdWordsTracker=new Image(1,1);AdWordsTracker.src='http://www.googleadservices.com/pagead/conversion/962806630/'
++'?value='+ConvPrice
++'&label='+ConvCode
++'&guid=ON'
++'&script=0';if(cmd[0]=="_trackTrans"&&mg['p'+UserPartnerID]){var AdWordsTrackerNew=new Image(1,1);AdWordsTrackerNew.src='http://www.googleadservices.com/pagead/conversion/'+mg['p'+UserPartnerID].tr+'/'
++'?value=500'
++'&label='+mg['p'+UserPartnerID].hs
++'&guid=ON'
++'&script=0';}}
+if(cmd[0]!="_trackOther"){for(var i=0;i<cmd.length;i++){cmd[i]=replaceCharCodes(cmd[i]);}
+_gaq.push(cmd);}}
+if(ya_orders.length)setTimeout(sendOrders,100);setCookie("_gaparserdata","",-1,"/");}
+function replaceCharCodes(str){if(typeof(str)=='string')str=str.replace(/&#0*(\d+);/g,function(s,d){return String.fromCharCode(d);});return str;}
+gaPusher.prototype.unescape=function(str){if(str.length==0||str=='undefined')return undefined;if(/('|")(.*)\1/.test(str))return str.substr(1,str.length-2);if(/(\.)/.test(str))return parseFloat(str);return parseInt(str);}
+gaPusher.prototype.push=function(data,force){if(typeof(force)!='undefined'&&force)return _gaq.push(data);for(var key in data){if(typeof(data[key])=="string")data[key]='"'+escape(data[key])+'"';}
+this.cmds.push("["+data.toString()+"]");setCookie("_gaparserdata",this.cmds.toString(),1,"/");}
+function TrackPartnerBuy(order,price,delivered,partner_key){if(GoogleAccount!='UA-15543008-1')return;var images=new Array();var iframes=new Object();var admitad_uid=getCookie("ADMITADUID");if(delivered==0){switch(UserPartnerID){case"4607515":if(admitad_uid){images.push('http://ad.admitad.com/register/3baa9723ff/script_type/img/payment_type/sale/product/1/cart/'+price+'/order_id/'+order+'/uid/'+admitad_uid+'/')};break;case"4787605":for(var i in ya_orders){var goods=ya_orders[i].order.goods
+if(ya_orders[i].target=='order'){var fullprice=0;for(var j in goods){fullprice+=goods[j].price;}
+var _pin=(UserPin&&UserPin!='')?'apcompact='+UserPin+'&':'';images.push('http://apypxl.com/ok/1078.png?'+_pin+'apid='+order+'&price='+fullprice);}}
+break;case"5349765":images.push('http://tracking2.cpa1.ru/?id=418&raid='+order+'&summ='+price);break;case"5351055":if(partner_key){images.push('http://a27.myragon.ru/track/id/'+order+'/key/'+partner_key+'/target/t1')};break;case"5439345":case"5439355":case"5439365":case"5439375":images.push('http://www.googleadservices.com/pagead/conversion/950471818/?value='+price+'&label=iXHVCKagvwMQipmcxQM&guid=ON&script=0');break;case"5484365":iframes['cpanetwork_tracker']='https://www.cpanetwork.ru/trackf.asp?o=344&ref='+order+'&amt='+price;break;case"5860505":images.push('http://www.qxplus.ru/scripts/sale.php?AccountId=273ffaf4&TotalCost='+price+'&OrderID='+order+'&ProductID=litres_default');break;case"5887565":if(partner_key){images.push('https://t.gameleads.ru/'+order+'/e1/'+partner_key)};break;case"5958845":images.push('http://luxup.ru/tr/1844/&r='+escape(document.referrer)+'&t='+(new Date()).getTime()+'&tref='+escape(document.location.href+'&action=payment'));break;case"10211265":images.push('http://ad.adriver.ru/cgi-bin/rle.cgi?sid=179325&sz=order&bt=55&pz=0&rnd=311947760&custom=10='+order+';11='+price);break;}}else if(delivered==1){switch(UserPartnerID){case"4607515":if(admitad_uid){images.push("http://ad.admitad.com/register/3baa9723ff/script_type/img/payment_type/sale/product/2/cart/"+price+"/order_id/"+order+"/uid/"+admitad_uid+"/")};break;case"5887565":if(partner_key){images.push('https://t.gameleads.ru/'+order+'/q1/'+partner_key)};break;}}else if(delivered==-1){switch(UserPartnerID){case"4607515":if(admitad_uid){images.push("http://ad.admitad.com/register/3baa9723ff/script_type/img/payment_type/sale/product/2/cart/"+price+"/order_id/"+order+"/uid/"+admitad_uid+"/")};break;case"5887565":if(partner_key){images.push('https://t.gameleads.ru/'+order+'/q1/'+partner_key)};break;}}
+if(UserPartnerID==8604325){var TDUID=getCookie('TDUID')||0;if(parseInt(TDUID)!=0){images.push("http://tbs.tradedoubler.com/report?organization=1687812&event=253602&orderValue="+price+"&orderNumber="+order+"&currency=RUB&tduid="+TDUID);setCookie('TDUID',0,-1,'/');}}
+for(var i=0;i<images.length;i++){var Tracker=new Image(1,1);Tracker.src=images[i];}
+var i=0;for(var key in iframes){var FuncObj={};FuncObj['key'+i++]=function(){if(GUJ)GUJ.PutRequest({url:iframes[key]})};BodyLoadFunc.push(FuncObj);}}
+function newYaOrder(t,p){var o={'order_id':0,'order_price':p,'currency':'RUR','goods':[]};if(ya_orders.user)o.user=user;ya_orders.push({'target':t,'order':o});return o;}
+function addGoodsInYaOrder(o,id,name,price){price=parseFloat(price);o.goods.push({'id':id,'name':replaceCharCodes(name),'price':price,'quantity':1});}
+function sendOrders(){if(!sent_yandex)sendYaOrders();if(!sent_cityads)sendToCityAds();if(!sent_criteo)sendToCriteo();if(!sent_admitad)sendToAdmitad();if(!sent_advaction)sendToAdvaction();if(!sent_mailru)sendToMailRu();if(!sent_googleadwords)sendToGoogleAdwords();if(!sent_facebook_targeting)sendToFacebookTargeting();if(!mail_tar_purchase)MailTarPurchase();if(!rtb_house_purchase)rtbHousePurchase();if(!sent_actionpay)sendToActionPay();if(!set_bought_cookie)setBoughtCookie();if(sent_yandex&&sent_cityads&&sent_criteo&&sent_admitad&&sent_advaction&&sent_mailru&&sent_googleadwords&&sent_facebook_targeting&&mail_tar_purchase&&rtb_house_purchase&&sent_actionpay&&set_bought_cookie){ya_orders=[];}else{setTimeout(sendOrders,100);};}
+function sendYaOrders(){if(window.yaCounter2199583!==undefined){for(var i in ya_orders){yaCounter2199583.reachGoal(ya_orders[i].target,ya_orders[i].order);var goods=[];if(ya_orders[i].target=='order'){for(var j in ya_orders[i].order.goods){goods.push({"id":ya_orders[i].order.goods[j].id,"name":ya_orders[i].order.goods[j].name,"price":ya_orders[i].order.goods[j].price,"quantity":1});}
+window.dataLayer=window.dataLayer||[];dataLayer.push({"ecommerce":{"currencyCode":"RUB","purchase":{"actionField":{"id":ya_orders[i].order.order_id},"products":goods}}});}}
+sent_yandex=1;}}
+function sendToCityAds(){var isOrder=false;for(var i in ya_orders){if(ya_orders[i].target=='order'){window.xcnt_order_id=ya_orders[i].order.order_id;window.xcnt_order_total=0.0;window.xcnt_order_products='';window.xcnt_order_quantity='';for(var j in ya_orders[i].order.goods){xcnt_order_products+=(j>0?',':'')+ya_orders[i].order.goods[j].id;xcnt_order_quantity+=(j>0?',':'')+1;xcnt_order_total+=ya_orders[i].order.goods[j].price;}
+if(!isOrder){isOrder=true;}}}
+if(isOrder){var xscr=document.createElement('script');var xcntr=escape(document.referrer);xscr.async=true;xscr.src=(document.location.protocol==='https:'?'https:':'http:')
++'//x.cnt.my/async/track/?r='+Math.random();var x=document.getElementsByTagName('script')[0];x.parentNode.insertBefore(xscr,x);}
+sent_cityads=1;}
+function sendToCriteo(){for(var i in ya_orders){var goods=ya_orders[i].order.goods
+if(ya_orders[i].target=='order'){var items=[];for(var j in goods){items.push({id:goods[j].id,price:goods[j].price,quantity:goods[j].quantity});}
+window.criteo_q=window.criteo_q||[];UserLastPayment=UserLastPayment||'';UserPartnerID=UserPartnerID||'';window.criteo_q.push({event:"trackTransaction",id:ya_orders[i].order.order_id,new_customer:(UserLastPayment!='')?0:1,deduplication:(/^(28442505|28442510|41597637)$/.test(UserPartnerID))?1:0,item:items});}}
+sent_criteo=1;}
+function sendToAdmitad(){var isOrder=false;for(var i in ya_orders){var goods=ya_orders[i].order.goods
+if(ya_orders[i].target=='order'){var items=[],fullprice=0;for(var j in goods){items.push({id:goods[j].id,quantity:goods[j].quantity});fullprice+=goods[j].price;}
+window._retag=window._retag||[];window._retag.push({code:"9ce88867b3",level:4});window.ad_order=ya_orders[i].order.order_id;window.ad_amount=fullprice;window.ad_products=items;if(!isOrder){isOrder=true;}}}
+if(isOrder){var s=document.createElement("script");s.async=true;s.src=(document.location.protocol=="https:"?"https:":"http:")+"//cdn.admitad.com/static/js/retag.js";var a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(s,a);}
+sent_admitad=1;}
+function sendToAdvaction(){var isOrder=false;window.asite='litres.ru';for(var i in ya_orders){var goods=ya_orders[i].order.goods
+if(ya_orders[i].target=='order'){var fullprice=0;for(var j in goods){fullprice+=goods[j].price;}
+window.order_id=ya_orders[i].order.order_id;window.price=fullprice;if(!isOrder){isOrder=true;}}}
+if(isOrder){var aa=document.createElement("script");aa.type="text/javascript";aa.async=true;aa.src=document.location.protocol+"//advaction.ru/js/ec_action.js";var s=document.getElementsByTagName("script")[0];s.parentNode.insertBefore(aa,s);}
+sent_advaction=1;}
+function sendToMailRu(){for(var i in ya_orders){var goods=ya_orders[i].order.goods
+if(ya_orders[i].target=='order'){var items=[],fullprice=0;for(var j in goods){items.push(goods[j].id);fullprice+=goods[j].price;}
+var _tmr=_tmr||[];_tmr.push({type:'itemView',productid:items,pagetype:'purchase',totalvalue:fullprice,list:'1'});}}
+sent_mailru=1;}
+function sendToGoogleAdwords(){for(var i in ya_orders){var goods=ya_orders[i].order.goods
+if(ya_orders[i].target=='order'){var items=[],fullprice=0,amount=0;for(var j in goods){items.push(goods[j].id.toString());fullprice+=goods[j].price;amount++;}
+window.google_tag_params={ecomm_prodid:amount==1?items[0]:items,ecomm_pagetype:"purchase",ecomm_totalvalue:amount==1?fullprice:[fullprice]};}}
+sent_googleadwords=1;}
+function sendToFacebookTargeting(){for(var i in ya_orders){var goods=ya_orders[i].order.goods;if(ya_orders[i].target=='order'){var items=[],fullprice=0;for(var j in goods){items.push(goods[j].id.toString());fullprice+=goods[j].price;}
+if(typeof fbq!='function'){!function(f,n){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];}(window);}
+fbq('track','Purchase',{content_ids:items,content_type:'product',value:fullprice,currency:'RUB'});}}
+sent_facebook_targeting=1;}
+function MailTarPurchase(){var _tmr=window._tmr||(window._tmr=[]);_tmr.push({id:"1283707",type:"reachGoal",goal:"purchase"});mail_tar_purchase=1;}
+if(!Array.prototype.indexOf){Array.prototype.indexOf=function(searchElement,fromIndex){var k;if(this==null){throw new TypeError('"this" is null or not defined');}
+var O=Object(this);var len=O.length>>>0;if(len===0){return-1;}
+var n=+fromIndex||0;if(Math.abs(n)===Infinity){n=0;}
+if(n>=len){return-1;}
+k=Math.max(n>=0?n:len-Math.abs(n),0);while(k<len){if(k in O&&O[k]===searchElement){return k;}
+k++;}
+return-1;};}
+_gap=new gaPusher(_gap);function rtbHousePurchase(){for(var i in ya_orders){var goods=ya_orders[i].order.goods;var orderId=ya_orders[i].order.order_id;if(ya_orders[i].target=='order'){var items=[],fullprice=0;for(var j in goods){items.push(goods[j].id.toString());fullprice+=goods[j].price;}
+createRTBIframe({page:"purchase",artId:items.join(','),value:fullprice,order_id:orderId});}}
+rtb_house_purchase=1;}
+function createRTBIframe(params){var iframe=document.createElement('iframe');iframe.width=1;iframe.height=1;iframe.scrolling="no";iframe.frameBorder=0;iframe.setAttribute("style","display: none;");var iframeSrc="//creativecdn.com/tags?id=pr_S10QdRFxD7D0Bd4Np10M";switch(params.page){case"biblio_book":iframeSrc+="_offer_"+params.artId;break;case"purchase":var cd=true;var UserPartnerID=window.UserPartnerID||'';if(UserPartnerID=="260030908"){cd=false;}
+iframeSrc+="_orderstatus2_"+params.value+"_"+params.order_id+"_"+params.artId+"&cd="+cd;break;case"basket":iframeSrc+="_basketstatus_"+params.artId;break;case"category":iframeSrc+="_category2_"+params.id;break;}
+iframe.src=iframeSrc;document.body.appendChild(iframe);}
+function sendToActionPay(){if(parseInt(UserPartnerID,10)===4787605){for(var i in ya_orders){var goods=ya_orders[i].order.goods
+if(ya_orders[i].target=='order'){var fullprice=0;for(var j in goods){fullprice+=goods[j].price;}
+var pixel=new Image();var actionpay=window.location.search.match(new RegExp('actionpay'+'=([^&=#]+)'))||'';if(actionpay&&actionpay[1]){actionpay=actionpay[1];}
+pixel.src='//apypx.com/ok/litres.png?actionpay='+actionpay+'&apid='+ya_orders[i].order.order_id+'&price='+fullprice;}}}
+sent_actionpay=1;}
+function setBoughtCookie(){for(var i in ya_orders){if(ya_orders[i].target=='order'){setCookie('just_bought','1',0,'/',0,15);break;}}
+set_bought_cookie=1;}

@@ -1,0 +1,59 @@
+function ReaderTools(){var me={};me.PFURL={pdf:{},lfrom:'',trial:false};me.isWin8=0;if(typeof WinJS==='object'){me.isWin8=true;}else{var URL=unescape(document.location+'');var ParamsFromURL=URL.split('?')[1].split('#')[0].split(/[=&]+/);for(var i=0;i<ParamsFromURL.length-1;i+=2){me.PFURL[ParamsFromURL[i].toLowerCase()]=ParamsFromURL[i+1].match(/^\d*$/)?ParamsFromURL[i+1]*1:ParamsFromURL[i+1]+'';}
+if(document.location.hash&&document.location.hash.replace('#','')!=''){var curPosition=document.location.hash.substr(1).split('-');me.PFURL.para=parseInt(curPosition[0]);me.PFURL.word=parseInt(curPosition[1]);}
+me.PFURL.art=me.PFURL.art||0;me.PFURL.user=me.PFURL.user||0;me.PFURL.lfrom=me.PFURL.lfrom?'&lfrom='+me.PFURL.lfrom:'';}
+me.IsiPhone=navigator.userAgent.match(/(iPhone|iPod).*(AppleWebKit|Safari)/)?121:0;me.IsiPad=navigator.userAgent.match(/iPad.*(AppleWebKit|Safari)/)?1:0;me.AlexMode=navigator.userAgent.match(/seleucia/i)?1:0;me.QTeInkMode=(me.PFURL.eink||navigator.userAgent.match(/QtEmbedded.*AppleWebKit.*Safari/i))?1:0;if(me.AlexMode){me.QTeInkMode=1;}
+me.IsAndroid=function(){return(navigator.userAgent.search(/android/i)>-1);};me.isIE=navigator.appName=='Microsoft Internet Explorer';me.IsOpera=navigator.userAgent.match(/opera/i)?1:0;me.getMousePosition=function(e){var _x=-1;var _y=-1;if(this.isIE){_x=e.clientX+document.body.scrollLeft;_y=e.clientY+document.body.scrollTop;}else if(e&&e.pageX!==undefined){_x=e.pageX;_y=e.pageY;}
+return{x:_x,y:_y};}
+me.get_selection=function(){var selection=undefined;if(document.getSelection){selection=document.getSelection();}
+else if(document.selection&&document.selection.createRange()){selection=document.selection.createRange().text;}
+else if(window.getSelection){selection=window.getSelection();}
+return selection;}
+me.getCurrentStyle=function(el){if(!el)return null;var s=el.currentStyle;if(!s)s=document.defaultView.getComputedStyle(el,null);return s;}
+me.toggle_class_on=function(el,cl){if(!el||!cl)return 0;var rcl=new RegExp("(\\b|\\s+)"+cl,"gi");if(!el.className.match(rcl)){el.className+=' '+cl;}
+return 1;}
+me.toggle_class_off=function(el,cl){if(!el||!cl)return 0;var rcl=new RegExp("(\\b|\\s+)"+cl,"gi");if(el.className.match(rcl)){el.className=el.className.replace(rcl,'');}
+return 1;}
+me.getOffsetRect=function(elem){var box=elem.getBoundingClientRect()
+var body=document.body
+var docElem=document.documentElement
+var scrollTop=window.pageYOffset||docElem.scrollTop||body.scrollTop
+var scrollLeft=window.pageXOffset||docElem.scrollLeft||body.scrollLeft
+var clientTop=docElem.clientTop||body.clientTop||0
+var clientLeft=docElem.clientLeft||body.clientLeft||0
+var top=box.top+scrollTop-clientTop
+var left=box.left+scrollLeft-clientLeft
+return{top:Math.round(top),left:Math.round(left)}}
+me._getOffset=function(el){var elStyle=this.getCurrentStyle(el);if(elStyle&&parseInt(elStyle.left)&&elStyle.position=='absolute')
+return{X:parseInt(elStyle.left),Y:parseInt(elStyle.top),fullX:parseInt(elStyle.left),fullY:parseInt(elStyle.top)};var out={X:0,Y:0,fullX:0,fullY:0};var b=true;var b_getFull;if(el.getBoundingClientRect){var tmp=this.getOffsetRect(el);out.fullX=parseInt(tmp.left);out.fullY=parseInt(tmp.top);b_getFull=false;}
+while(el&&(b||b_getFull)){if(b&&this.getCurrentStyle(el).position=='relative'){if(b_getFull){out.fullX=out.X;out.fullY=out.Y;b=false;}else{break;}}
+if(b){out.X+=parseInt(el.offsetLeft);out.Y+=parseInt(el.offsetTop);}else{out.fullX+=parseInt(el.offsetLeft);out.fullY+=parseInt(el.offsetTop);}
+el=el.offsetParent;}
+if(b&&b_getFull){out.fullX=out.X;out.fullY=out.Y;}
+return out;}
+me.stopPropagation=function(e){e=e||window.event;if(e.stopPropagation){e.stopPropagation();}else{e.cancelBubble=true;}
+return false;}
+me.EventTarget=function(event){var targ;if(!event){var event=window.event;}
+if(event.target){targ=event.target;}else if(event.srcElement){targ=event.srcElement;}
+return targ;}
+me.GetCookValue=function(SetupStr,CookName,NeedEsc){var GetCookValRegexp=new RegExp(CookName+':([^,]+)');var CheckCook=SetupStr.match(GetCookValRegexp)
+if(CheckCook&&CheckCook[1]){var Val=CheckCook[1];if(NeedEsc){Val=unescape(Val)}
+return this.FixNumber(Val);}}
+me.FixNumber=function(Val){if((Val+'').match(/^[\d+\.]$/)){Val=Val*1;}
+return Val;}
+me.FindPosX=function(obj){var curleft=0;if(obj.offsetParent){while(1){curleft+=obj.offsetLeft;if(!obj.offsetParent){break;}
+obj=obj.offsetParent;}}else if(obj.x){curleft+=obj.x;}
+return curleft;}
+me.replaceHtml=function(el,html){var oldEl=typeof el==="string"?document.getElementById(el):el;/*@cc_on // Pure innerHTML is slightly faster in IE
+			oldEl.innerHTML = html;
+			return oldEl;
+		@*/
+var newEl=oldEl.cloneNode(false);newEl.innerHTML=this.cleanHTML(html);oldEl.parentNode.replaceChild(newEl,oldEl);return newEl;}
+me.getBrowserInfo=function(){var out={ie:false,firefox:false,opera:false,chrome:false,safari:false,version:0,name:'undef'};var a=navigator.userAgent.match(/(Chrome|Safari|Opera|Firefox)\/([\d\.]+)/i);if(a){var b=a[1].toLowerCase();var v=navigator.userAgent.match(/Version\/([\d\.]+)/i);out[b]=true;out.name=b;out.version=v?v[1]:a[2];}else if(a=navigator.userAgent.match(/(MSIE)\s+([\d\.]+)/i)){out['msie']=true;out.name='msie';out.version=a[2];}
+return out;}
+me.ID2Tree=function(fid){for(fid=fid.toString();fid.length<8;fid='0'+fid);var a=fid.match(/^(\d\d)(\d\d)(\d\d)\d\d$/);a=a[1]+'/'+a[2]+'/'+a[3];return[fid,a];}
+me.MakeQuickBuyFrame=function(BgColor,FgColor,Width,Height){if(this.isWin8){return['<div class="buy-book buyFromReader" id="b_'+Reader.getBookID()+'" style="margin-top:20px;"></div>'];}
+Width=Width||'100%';Height=Height||370;return['<iframe id="quick_buy_frame" src="/pages/quick_buy_frame/?art='+Tools.PFURL.art+me.PFURL.lfrom+'&bg_color='+escape(BgColor)+'&fg_color='+escape(FgColor)+'" name="buyframe" id="buyframe" width="'+Width+'" height="'+Height+'" marginwidth="0" marginheight="0" frameborder="0" scrolling="no" style="overflow: hidden;"></iframe>'];}
+me.MakeUpsaleFrame=function(BgColor,FgColor,Width,Height){return['<iframe id="upsale_frame" src="/pages/quick_recommend/?art='+Tools.PFURL.art+me.PFURL.lfrom+'&bg_color='+escape(BgColor)+'&fg_color='+escape(FgColor)+'" name="upsaleFrame" width="100%" height="285" marginwidth="0" marginheight="0" frameborder="0" scrolling="no" style="overflow: hidden;" target="_top"></iframe>'];}
+me.getCharCount=function(str,c){var index=str.indexOf(c);var count=0;while(index!=-1){count++;index=str.indexOf(c,index+1);}
+return count;};me.cleanHTML=function(html){return this.isWin8?toStaticHTML(html):html;}
+return me;}

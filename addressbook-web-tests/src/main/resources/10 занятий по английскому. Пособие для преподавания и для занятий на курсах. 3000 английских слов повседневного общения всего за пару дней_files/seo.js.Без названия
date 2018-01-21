@@ -1,0 +1,2 @@
+BodyLoadFunc.push({'seo_hack':function(){var arr=$('[data-seotext]');if(arr.length){var o={seo_txt_download_free:'<i/><span>Скачать<br /> бесплатно</span>'},i;for(i=0;i<arr.length;i++){var $self=$(arr[i])
+$self.html(o[$self.attr('data-seotext')]);}}}});

@@ -1,0 +1,228 @@
+/**
+ * 
+ */
+
+var History = (function() {
+
+	var oldToken = '', 
+		newToken = '',
+		oldHash = '',
+		newHash = '',
+		date = new Date(),
+		
+		check = function(regexp) {
+			return regexp.test(navigator.userAgent.toLowerCase());
+		},
+		
+		docMode = document.documentMode,
+		isOpera = check(/opera/),
+		isStrict =  document.compatMode == "CSS1Compat",
+		isIE = !isOpera && check(/msie/),
+		isIE7 = isIE && (check(/msie 7/) || docMode == 7),
+		isIE8 = isIE && (check(/msie 8/) && docMode != 7 && docMode != 9 || docMode == 8),
+		isIE9 = isIE && (check(/msie 9/) && docMode != 7 && docMode != 8 || docMode == 9),
+		isIE6 = isIE && check(/msie 6/),
+		
+		backHandler = null,
+		
+		htmlEncode = (function() {
+			var entities = {
+				'&': '&amp;',
+				'>': '&gt;',
+				'<': '&lt;',
+				'"': '&quot;'
+			}, keys = [], p, regex;
+				
+			for (p in entities) {
+				keys.push(p);
+			}
+			
+			regex = new RegExp('(' + keys.join('|') + ')', 'g');
+			
+			return function(value) {
+				return (!value) ? value : String(value).replace(regex, function(match, capture) {
+					return entities[capture];
+				});
+			};
+		})();
+
+
+	return {
+		cancelLoad: false,
+		oldIEMode: isIE6 || isIE7 || !isStrict && isIE8,
+		iframe: null,
+		hiddenField: null,
+		currentToken: null,
+		ready: false,
+		fieldId: 'history-field',
+		iframeId: 'history-frame',
+		lengthId: 'history-length',
+
+
+		init: function () {
+			var that = this;
+			
+			that.hiddenField = jQuery('#' + that.fieldId)[0];
+			
+			if (that.oldIEMode) {
+				that.iframe = jQuery('#' + that.iframeId)[0];
+			}
+			
+			that.startUp();
+		},
+		
+		handleStateChange: function(token) {
+			this.currentToken = 
+				(typeof token == 'object') ? token.newURL : token;
+			
+			backHandler.call(this);
+		
+			History.currentToken = History.getHash();
+		},
+		
+		setListener: function(onBack) {
+			backHandler = onBack;
+		},
+		
+		getHash: function() {
+			var href = window.location.href,
+				i = href.indexOf('#');
+			
+			return i >= 0 ? href.substring(i + 1) : null;
+		},
+		
+		doSave: function() {
+			this.hiddenField.value = this.currentToken;
+		},
+		
+		add: function (token, preventDup, cancel) {
+			var that = this;
+			
+			this.cancelLoad = !!cancel;
+			
+			if (preventDup !== false) {
+				if (that.getToken() === token) {
+					return true;
+				}
+			}
+			
+			if (that.oldIEMode) {
+				return that.updateIFrame(token);
+			} else {
+				window.top.location.hash = token;
+				return true;
+			}
+		},
+		
+		startUp: function() {
+			var that = this;
+			
+			that.currentToken = that.hiddenField.value || that.getHash();
+			
+			if ('onhashchange' in window && !that.oldIEMode) {
+				if (window.addEventListener)
+				{
+					window.addEventListener('hashchange', function(e) { 
+						that.handleStateChange(e);
+						that.doSave();
+					}, false);
+				} else if (window.attachEvent) {
+					window.attachEvent('onhashchange', function(e) {
+						if (isIE8) {
+							that.updateIFrame(History.getHash());
+						}
+						that.handleStateChange(e);
+						that.doSave();
+					});
+				}
+			} else {
+				if (that.oldIEMode) {
+					that.checkIFrame();
+				} else {
+					var hash = that.getHash();
+					
+					var run = function() {
+						var newHash = that.getHash();
+						if (newHash !== hash) {
+							hash = newHash;
+							that.handleStateChange(hash);
+							that.doSave();
+						}
+						setTimeout(run, 30);
+					};
+					setTimeout(run, 30);
+					
+					that.ready = true;
+				}
+			}
+		},
+		
+		checkIFrame: function() {
+			var that = this,
+				contentWindow = that.iframe.contentWindow;
+			
+			if (!contentWindow || !contentWindow.document) {
+				setTimeout(that.checkIFrame, 10);
+				return;
+			}
+			var doc = contentWindow.document,
+			elem = doc.getElementById("state"),
+			oldToken = elem ? elem.innerText : null,
+			oldHash = that.getHash();
+			
+			that.ready = true;
+			
+			var run = function() {
+				var doc = contentWindow.document,
+					elem = doc.getElementById("state"),
+					newToken = elem ? elem.innerText : null,
+					newHash = that.getHash();
+		
+				if (newToken !== oldToken) {
+					var newDate = new Date();
+					oldToken = newToken;
+					that.handleStateChange(newToken);
+					window.top.location.hash = newToken;
+					oldHash = newToken;
+					that.doSave();
+				} else if (newHash !== oldHash) {
+					oldHash = newHash;
+					that.updateIFrame(newHash);
+				}
+				setTimeout(run, 30);
+			};			
+			setTimeout(run, 30);
+		},
+		
+		updateIFrame: function(token) {
+			var html = '<html><head></head><body><div id="state">' + 
+				htmlEncode(token) + 
+				'</div></body></html>';
+		
+			try {
+				var doc = this.iframe.contentWindow.document;
+				doc.open();
+				doc.write(html);
+				doc.close();
+				return true;
+			} catch (e) {
+				return false;
+			}
+		},
+		
+		back: function() {
+			window.history.go(-1);
+		},
+	
+		
+		forward: function(){
+			window.history.go(1);
+		},
+	
+		
+		getToken: function() {
+			return this.ready ? this.currentToken : this.getHash();
+		}
+		
+	};
+})();

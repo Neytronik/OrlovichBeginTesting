@@ -1,0 +1,8 @@
+.ab-userinfo .icon:before{background-image:url(/static/new/adaptive/images_advanced/popup/popup-icons.svg);}
+.ab-header .ab-container > .ab-logo span{background-image:url(/static/new/adaptive/images_advanced/menu/logo.svg);height:39px;}
+.ab-userinfo .basket,.ab-userinfo .basket .basket_not_empty, .ab-userinfo .basket .basket_empty{background-image:url(/static/new/adaptive/images_advanced/menu/basket.svg);background-size:11px 10px;}
+.ab-search .searchbutn span:after{background-image:url(/static/new/adaptive/images_advanced/menu/search-arrow.svg);}
+.ab-userinfo .user > a span img{margin-top:8px;}
+
+/* [48975] АБ-тест на плавающую шапку */
+.ab-header_transform .ab-container > .ab-logo span{height: 32px;width:90px;}

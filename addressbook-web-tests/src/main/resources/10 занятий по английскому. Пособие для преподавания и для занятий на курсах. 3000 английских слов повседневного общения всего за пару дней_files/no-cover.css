@@ -1,0 +1,12 @@
+/* [101269] Замена отсутствующей обложки на модный блок с переводимым текстом */
+.book-no-cover {display: block; height: 100%; position: absolute; width: 100%; top: 0; left: 0; background-color: #EAEEF3; border: 1px solid #c6c9cd; overflow: hidden;}
+.book-no-cover:before {display: inline-block; height: 100%; vertical-align: middle; content: '';}
+.book-no-cover__inner {display: inline-block; vertical-align: middle; width: 100%; text-align: center;}
+.book-no-cover__text {text-transform: uppercase; font-weight: bold; color: #70748F; line-height: normal; margin-top: 3%; display: block; visibility: hidden;}
+.book-no-cover__img {display: block; width:  60%; padding-top: 60%; background: url('/static/litres/modules/no-cover/i/img_no_cover.svg') 0 0 / contain no-repeat; margin: auto;}
+.book-error-cover {display: block; height: 100%; position: absolute; width: 100%; top: 0; left: 0; background-color: #EAEEF3; border: 1px solid #c6c9cd; overflow: hidden;}
+.book-error-cover:before {display: inline-block; height: 100%; vertical-align: middle; content: '';}
+.book-error-cover__inner {display: inline-block; vertical-align: middle; width: 100%; text-align: center;}
+.book-error-cover__text {text-transform: uppercase; font-weight: bold; color: #70748F; line-height: normal; margin-top: 3%; display: block;}
+.book-error-cover__img {display: block; width:  60%; padding-top: 60%; background: url('/static/litres/modules/no-cover/i/img_no_cover_error.svg') 0 0 / contain no-repeat; margin: auto;}
+img[data-cover-error='1'] {text-indent: 100%; white-space: nowrap; overflow: hidden; display: block; position: relative; z-index: 1; opacity: 0;}
